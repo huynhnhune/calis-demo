@@ -23,8 +23,8 @@ img{max-width:100%}
   --bg:#EDF0EB; --surface:#FFFFFF; --surface-2:#E2E7E0; --line:#D0D8CF;
   --fg:#15201B; --muted:#58665F;
   --accent:#1D6A4F; --accent-soft:#D5E8DD; --on-accent:#FFFFFF;
-  --flame:#C9531C; --flame-soft:#FAE2D5;
-  --good:#1D7A4B; --good-soft:#D9EEDF; --warn:#9A6A0C; --warn-soft:#F5E8C8; --danger:#B3362B;
+  --flame:#A84412;--bronze:#A8662C;--on-flame:#FFFFFF; --flame-soft:#FAE2D5;
+  --good:#176A40; --good-soft:#D9EEDF; --warn:#7E5609; --warn-soft:#F5E8C8; --danger:#A02C22;
   --font-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
   --font-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
   --r:14px;
@@ -33,14 +33,14 @@ img{max-width:100%}
   --bg:#0E1311; --surface:#161D19; --surface-2:#1F2823; --line:#2B3630;
   --fg:#E5EBE7; --muted:#97A59D;
   --accent:#5BC598; --accent-soft:#1C3A2D; --on-accent:#07140E;
-  --flame:#FF8A50; --flame-soft:#3B2318;
+  --flame:#FF8A50;--bronze:#E3A46E;--on-flame:#1F0E05; --flame-soft:#3B2318;
   --good:#5BC598; --good-soft:#1C3A2D; --warn:#E3B04B; --warn-soft:#3A2F14; --danger:#F07468;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0E1311; --surface:#161D19; --surface-2:#1F2823; --line:#2B3630;
   --fg:#E5EBE7; --muted:#97A59D;
   --accent:#5BC598; --accent-soft:#1C3A2D; --on-accent:#07140E;
-  --flame:#FF8A50; --flame-soft:#3B2318;
+  --flame:#FF8A50;--bronze:#E3A46E;--on-flame:#1F0E05; --flame-soft:#3B2318;
   --good:#5BC598; --good-soft:#1C3A2D; --warn:#E3B04B; --warn-soft:#3A2F14; --danger:#F07468;
   color-scheme:dark}
 
@@ -77,7 +77,7 @@ p{margin:0}
 .list>.item{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);min-width:0}
 .list>.item:first-child{border-top:0}
 
-.av{--h:150;display:inline-grid;place-items:center;width:34px;height:34px;flex:none;border-radius:50%;background:hsl(var(--h) 40% 38%);color:#fff;font-weight:700;font-size:.78rem;letter-spacing:.02em}
+.av{--h:150;display:inline-grid;place-items:center;width:34px;height:34px;flex:none;border-radius:50%;background:hsl(var(--h) 42% 32%);color:#fff;font-weight:700;font-size:.78rem;letter-spacing:.02em}
 .av.sm{width:26px;height:26px;font-size:.65rem}
 .av.lg{width:56px;height:56px;font-size:1.1rem}
 .stack{display:flex}.stack .av{margin-left:-6px;border:2px solid var(--surface)}.stack .av:first-child{margin-left:0}
@@ -93,7 +93,7 @@ p{margin:0}
 .btn:hover{border-color:var(--accent)}
 .btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .btn.pri:hover{filter:brightness(1.08)}
-.btn.flame{background:var(--flame);border-color:var(--flame);color:#fff}
+.btn.flame{background:var(--flame);border-color:var(--flame);color:var(--on-flame)}
 .btn.ghost{background:transparent;border-color:transparent;color:var(--accent);padding-inline:6px}
 .btn.sm{padding:5px 10px;font-size:.8rem;border-radius:8px}
 .btn.block{width:100%}
@@ -136,7 +136,7 @@ p{margin:0}
 /* leaderboard */
 .lb .item{gap:10px}
 .rank{width:26px;text-align:center;font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--muted)}
-.rank.r1{color:#C08A12}.rank.r2{color:#8A949B}.rank.r3{color:#A8693A}
+.rank.r1{color:#B07D0A}.rank.r2{color:#7D878E}.rank.r3{color:var(--bronze)}
 .lb .me{background:var(--accent-soft);border-radius:10px;padding-inline:8px;margin-inline:-8px}
 .mv{font-size:.7rem;font-weight:700}.mv.up{color:var(--good)}.mv.dn{color:var(--danger)}
 
@@ -232,10 +232,10 @@ details.card summary{cursor:pointer;list-style-position:inside}
 .empty-al{cursor:pointer;border-style:dashed;text-align:center;align-items:center;gap:4px}
 img.av{object-fit:cover;padding:0}
 .avedit{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;font-size:.7rem;color:var(--accent);font-weight:600;flex:none}
-.lb{position:fixed;inset:0;z-index:30;background:rgba(5,8,6,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;text-align:center;
+.lightbox{position:fixed;inset:0;z-index:30;background:rgba(5,8,6,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;text-align:center;
   padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-.lb img{max-width:100%;max-height:72vh;border-radius:12px;object-fit:contain}
-.lb .btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.lightbox img{max-width:100%;max-height:72vh;border-radius:12px;object-fit:contain}
+.lightbox .btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
 
 /* streak card */
 .streak-card{gap:14px}
@@ -390,6 +390,81 @@ button.pg-h.sel{background:var(--accent-soft);color:var(--accent)}
 .sr-d b{font-size:1.5rem}
 .sr-d small{font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;margin-top:2px}
 .sess-row.is-cx b{text-decoration:line-through;color:var(--muted)}
+/* calendar home */
+.cal-card{gap:8px;padding-bottom:10px}
+.cal-top{display:flex;align-items:center;justify-content:space-between}
+.cal-top b{font-family:var(--font-display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+.cal-top .btn{font-size:1.3rem;line-height:1}
+.cal-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-d{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0 5px;border-radius:12px;border:1px solid transparent;background:transparent;cursor:pointer;color:var(--fg);font-family:inherit;min-width:0}
+.cal-d small{font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase}
+.cal-d b{font-family:var(--font-display);font-size:1.35rem;line-height:1}
+.cal-d.past b{color:var(--muted)}
+.cal-d.today{border-color:var(--line)}
+.cal-d.today small{color:var(--flame)}
+.cal-d.sel{background:var(--accent);border-color:var(--accent)}
+.cal-d.sel b,.cal-d.sel small{color:var(--on-accent)}
+.mks{display:flex;gap:3px;height:7px;align-items:center}
+.mk{display:inline-block;width:7px;height:7px;border-radius:50%;font-style:normal}
+.mk.park{background:var(--good)}
+.mk.park.cx{background:transparent;border:1.5px solid var(--muted)}
+.mk.mine{background:var(--flame)}
+.mk.done{background:var(--flame);box-shadow:0 0 0 2px var(--flame-soft)}
+.cal-d.sel .mk.park{background:var(--on-accent)}
+.cal-legend2{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;font-size:.7rem;color:var(--muted)}
+.cal-legend2 span{display:flex;align-items:center;gap:5px}
+.hero{gap:12px}
+.hero.is-park{border-color:var(--good);border-width:1.5px}
+.hero-top{display:flex;gap:12px;align-items:flex-start}
+.hp-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--good-soft);color:var(--good);flex:none}
+.hp-ic svg{width:26px;height:26px}
+.hero-top.none .hp-ic{background:var(--surface-2);color:var(--muted)}
+.hero-top.cx .hp-ic{background:var(--warn-soft);color:var(--warn)}
+.hero-top.cx .hp-t{text-decoration:line-through;color:var(--muted)}
+.hp-t{display:block;font-family:var(--font-display);font-size:1.35rem;line-height:1.15;margin-top:1px}
+.hero-top a{color:var(--accent)}
+.goers{display:flex;align-items:center;gap:10px;background:var(--surface-2);border-radius:12px;padding:8px 10px}
+.ask{font-size:1rem}
+.confirm-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px}
+.confirm-btns .btn{padding-block:11px}
+.my-state{display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:12px;padding:10px 12px;background:var(--accent-soft);font-size:.92rem}
+.my-state.rest{background:var(--surface-2)}
+.my-state.done{background:var(--good-soft);color:var(--good);font-weight:700}
+.disclose{display:flex;align-items:center;justify-content:space-between;width:100%;border:0;border-top:1px solid var(--line);background:transparent;padding:10px 0 0;font:inherit;font-weight:600;color:var(--accent);cursor:pointer}
+.park-note{border-left:3px solid var(--good)}
+.who-g{display:flex;flex-direction:column;gap:6px;padding-top:8px}
+.ring.todo2{border-color:var(--line)}
+.str-list{display:flex;flex-direction:column;gap:8px}
+.str-row{display:flex;align-items:center;gap:10px}
+.str-n{width:44px;font-weight:600;font-size:.88rem}
+.str-v{width:42px;text-align:right;font-weight:700}
+.ch-mini{width:100%;background:transparent;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.confirm-btns{grid-template-columns:1fr 1fr}
+.confirm-btns .btn[data-v="park"]{grid-column:1/-1}
+.asg-item{flex-wrap:wrap;row-gap:6px}
+.asg-item>.grow{flex:1 1 100%}
+.asg-item>.btn{margin-left:auto}
+@media (max-width:380px){
+  .brand span,.who label{display:none}
+  .brand b{font-size:1.1rem}
+  .who select{max-width:150px}
+  h2{font-size:1.35rem}
+}
+/* commit challenge */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.rules>div{background:var(--surface-2);border-radius:10px;padding:8px 10px;min-width:0}
+.rules p{font-size:.88rem}
+.commit-bar{position:relative;padding:4px 0}
+.commit-bar .bar{height:10px}
+.cb-mark{position:absolute;top:0;width:3px;height:18px;border-radius:2px;background:var(--fg);transform:translateX(-1px)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ba-i{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ba-ph{aspect-ratio:3/4;max-width:100%;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;overflow:hidden;border:1px dashed var(--line)}
+.ba-ph img{width:100%;height:100%;object-fit:cover}
+.ph-sample{font-size:.74rem;color:var(--muted);text-align:center;padding:6px}
+.ba-mini{display:flex;gap:4px;flex:none}
+.ba-mini>*{width:30px;height:40px;border-radius:6px;object-fit:cover;background:var(--surface-2);display:grid;place-items:center;font-size:.55rem;padding:0;overflow:hidden}
+.join-card{border-color:var(--accent);border-width:1.5px}
 /* simplified layout */
 .today-h{display:flex;align-items:flex-end;gap:12px}
 .streak-mini{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--flame-soft);color:var(--flame);border-radius:14px;padding:6px 12px;min-width:76px}
@@ -456,7 +531,7 @@ const EX={
   pushup:{n:'Push-up',u:'rep'},incline:{n:'Incline push-up',u:'rep'},pullup:{n:'Pull-up',u:'rep'},arow:{n:'Australian row',u:'rep'},
   dips:{n:'Dips',u:'rep'},squat:{n:'Squat',u:'rep'},pistol:{n:'Pistol squat (mỗi chân)',u:'rep'},pike:{n:'Pike push-up',u:'rep'},
   mu_neg:{n:'Muscle-up negative',u:'rep'},legraise:{n:'Leg raise',u:'rep'},lunge:{n:'Lunge (mỗi chân)',u:'rep'},band_pull:{n:'Band pull-apart',u:'rep'},wrist:{n:'Khởi động cổ tay',u:'s'},joints:{n:'Xoay khớp vai, hông',u:'s'},stretch:{n:'Giãn cơ toàn thân',u:'s'},
-  plank:{n:'Plank',u:'s'},hollow:{n:'Hollow body hold',u:'s'},hang:{n:'Dead hang',u:'s'},lsit:{n:'L-sit',u:'s'},tfl:{n:'Tuck front lever',u:'s'},hs:{n:'Handstand tựa tường',u:'s'}
+  plank:{n:'Plank',u:'s'},sideplank:{n:'Side plank (mỗi bên)',u:'s'},deadbug:{n:'Dead bug (mỗi bên)',u:'rep'},vup:{n:'V-up',u:'rep'},hollow:{n:'Hollow body hold',u:'s'},hang:{n:'Dead hang',u:'s'},lsit:{n:'L-sit',u:'s'},tfl:{n:'Tuck front lever',u:'s'},hs:{n:'Handstand tựa tường',u:'s'}
 };
 function exI(id){if(id&&id.startsWith('combo:')){const c=(S.combos||[]).find(x=>x.id===id.slice(6));return c?{n:c.code,u:'round',combo:c}:{n:'Combo đã xóa',u:'round'}}return EX[id]}
 const dose=it=>exI(it.ex).u==='round'?it.sets+' vòng':it.sets+' × '+it.reps+(exI(it.ex).u==='s'?'s':'');
@@ -468,7 +543,7 @@ const BODY={weight:['Cân nặng','kg',1],waist:['Vòng eo','cm',1],chest:['Vòn
 const KIND={photo:'Ảnh',pr:'Kỷ lục',skill:'Kỹ năng',streak:'Chuỗi',challenge:'Challenge',meet:'Tập chung',group:'Cả nhóm'};
 const REACTS=['🔥','💪','👏','😮'];
 const SKILLS={fl:{n:'Front lever',st:['Tuck','Advanced tuck','One leg','Straddle','Full']},pl:{n:'Planche',st:['Lean','Tuck','Advanced tuck','Straddle','Full']},hs:{n:'Handstand',st:['Tựa tường','Tự do 10s','Tự do 30s','Handstand push-up','Press']},mu:{n:'Muscle-up',st:['Negative','Có đà','Strict 1 rep','Strict 3 rep','Strict 5 rep']}};
-const CTYPE={total:'Tích lũy',progress:'Tiến bộ',consistency:'Kiên trì'};
+const CTYPE={total:'Tích lũy',progress:'Tiến bộ',consistency:'Kiên trì',commit:'Cam kết'};
 const MAPS='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Công viên Lê Văn Tám, TP. Hồ Chí Minh');
 
 // Giáo án mẫu để trưởng nhóm chép nhanh khi giao bài.
@@ -480,6 +555,7 @@ function defaultLessons(){const L=(id,name,note,items)=>({id,name,note,items:ite
     L('l-pull','Pull day A','Nghỉ 2–3 phút giữa các hiệp pull-up. Xuống chậm 3 giây.',[['warm','joints',1,120],['warm','band_pull',2,15],['warm','hang',2,20],['skill','tfl',4,10],['main','pullup',4,6],['main','arow',3,10],['acc','hollow',3,30],['cool','stretch',1,300]]),
     L('l-push','Push day A','Khóa khuỷu tay ở đầu mỗi rep. Khởi động cổ tay kỹ trước handstand.',[['warm','wrist',1,120],['warm','band_pull',2,15],['skill','hs',5,30],['main','pushup',4,12],['main','dips',4,8],['main','pike',3,8],['acc','plank',3,45],['cool','stretch',1,300]]),
     L('l-legs','Chân và core','Pistol squat có thể bám cột để giữ thăng bằng.',[['warm','joints',1,120],['main','squat',4,15],['main','lunge',3,10],['main','pistol',3,5],['acc','legraise',3,12],['acc','hollow',3,30],['cool','stretch',1,300]]),
+    L('l-core','Core 30 ngày (bài challenge)','Khoảng 15 phút mỗi ngày. Mỗi tuần tăng 5 giây cho bài giữ, hoặc 2 rep cho bài đếm.',[['warm','joints',1,90],['main','hollow',3,30],['main','plank',3,45],['main','sideplank',2,30],['main','legraise',3,12],['acc','deadbug',3,10],['acc','vup',2,10],['cool','stretch',1,180]]),
     L('l-5md','Circuit 5md','Làm liền 5 pull-up rồi 10 push-up là 1 vòng. Nghỉ tối đa 60 giây giữa các vòng.',[['warm','joints',1,120],['warm','wrist',1,60],['main','combo:5md',10,1],['acc','hollow',3,30],['cool','stretch',1,300]])
   ]}
 function lessonSections(items){return SEC_ORDER.map(k=>{const its=items.filter(it=>(it.sec||'main')===k);
@@ -534,6 +610,11 @@ function seed(){
   const all=members.map(m=>m.id);
   const prog=o=>{const p={};for(const k in o){const v=o[k];p[k]=Array.isArray(v)?{b:v[0],v:v[1],last:v[2]||off(-1)}:{b:0,v,last:off(-1)}}return p};
   const challenges=[
+    {id:'c-core',name:'Core 30 ngày',type:'commit',ex:null,start:TODAY,end:off(29),target:0,team:0,by:'phi',minRate:.75,lesson:'l-core',
+     penalty:'Bao nước cả nhóm sau một buổi tập chung',
+     desc:'Mỗi ngày tập bài core anh Phi Le soạn riêng cho challenge (khoảng 15 phút), xong thì bấm điểm danh. Tham gia phải nộp ảnh bụng trước khi bắt đầu, kết thúc nộp ảnh sau để so sánh.',
+     reward:'Huy hiệu Bụng thép cho ai tập từ 90% số ngày',
+     participants:['phi','nhat','dai','dong'],progress:{phi:{v:1,days:[TODAY],before:'sample',last:TODAY},nhat:{v:1,days:[TODAY],before:'sample',last:TODAY},dai:{v:1,days:[TODAY],before:'sample',last:TODAY},dong:{v:0,days:[],before:'sample',last:null}},prevRank:{}},
     {id:'c1',name:monthName(TODAY)+' – 7.000 Push-up',type:'total',ex:'pushup',start:mStart,end:mEnd,target:700,team:7000,by:'phi',
      desc:'Cộng dồn số push-up cả tháng. Mỗi rep chỉ được tính khi ngực chạm nắm tay và khuỷu tay khóa hết ở trên.',reward:'Người về chót bao cả nhóm cà phê sau buổi tập Chủ nhật',
      participants:all.slice(),progress:prog({phi:820,nhat:790,leo:760,dong:610,becky:590,phat:575,dai:540,nhu:480,ngoc:430,quay:210}),prevRank:{phi:1,nhat:2,leo:3,dong:4,becky:6,phat:5,dai:7,nhu:8,ngoc:9,quay:10}},
@@ -547,12 +628,12 @@ function seed(){
      desc:'Cộng dồn squat cả tháng.',reward:'Huy hiệu Chân gỗ lim',
      participants:['phi','leo','dong','phat','nhu','quay'],progress:prog({phi:640,leo:520,dong:505,phat:610,nhu:470,quay:300}),prevRank:{}}
   ];
-  ['dong','phi','phat'].forEach(id=>challenges[0].progress[id].last=TODAY);
+  ['dong','phi','phat'].forEach(id=>challenges.find(c=>c.id==='c1').progress[id].last=TODAY);
 
   const nextSun=(7-T0.getDay())%7||7;
   const nextTue=((2-T0.getDay()+7)%7)||7,lastTue=-(((T0.getDay()-2+7)%7)||7);
   const sessions=[
-    {id:'r-'+TODAY,title:'Buổi tập chung',date:TODAY,time:'18:00',plan:'Khởi động cổ tay 10 phút, handstand tựa tường 5 × 30s, L-sit 4 × 15s, hollow body 3 × 30s.',repeat:'Cố định',fixed:true,rsvp:{phi:'yes',leo:'yes',nhu:'yes',ngoc:'yes',quay:'no'},checkins:[]},
+    {id:'r-'+TODAY,title:'Buổi tập chung',date:TODAY,time:'18:00',plan:'Khởi động cổ tay 10 phút, handstand tựa tường 5 × 30s, L-sit 4 × 15s, hollow body 3 × 30s.',repeat:'Cố định',fixed:true,rsvp:{phi:'yes',nhu:'yes',ngoc:'yes',quay:'no'},checkins:[]},
     {id:'s2',title:'Test chỉ số 2 tuần/lần',date:off(nextSun),time:'06:00',plan:'Test max push-up, pull-up, dips, plank, dead hang. Mọi người nhập kết quả vào tab Tôi ngay tại công viên.',repeat:'Buổi thêm',rsvp:{phi:'yes',nhu:'yes',dai:'yes',ngoc:'yes'},checkins:[]},
     {id:'r-'+off(nextTue),title:'Buổi tập chung',date:off(nextTue),time:'18:00',plan:'',repeat:'Cố định',fixed:true,rsvp:{},checkins:[],cancelled:{reason:'Công viên đóng cửa do có sự kiện',by:'phi'}},
     {id:'r-'+off(lastTue),title:'Push day',date:off(lastTue),time:'18:00',plan:'',repeat:'Cố định',fixed:true,rsvp:{},checkins:['phi','leo','dong','phat','nhu','nhat','dai']}
@@ -567,25 +648,26 @@ function seed(){
 
   const feed=[
     {id:'f1',who:'dong',kind:'pr',text:'phá kỷ lục Dips: <b>15 rep</b> (cũ 13)',ts:now-2*H,re:{'🔥':['phi','nhu','becky'],'💪':['leo']},cm:[{who:'phi',t:'Form chuẩn rồi, tuần sau thử dips đeo tạ nhé'}]},
-    {id:'f2',who:'becky',kind:'challenge',text:'vượt Phát, lên hạng 5 ở <b>'+esc(challenges[0].name)+'</b>',ts:now-5*H,re:{'👏':['nhu','dong'],'😮':['phat']},cm:[{who:'phat',t:'Mai lấy lại hạng 😤'}]},
+    {id:'f2',who:'becky',kind:'challenge',text:'vượt Phát, lên hạng 5 ở <b>'+esc(challenges.find(c=>c.id==='c1').name)+'</b>',ts:now-5*H,re:{'👏':['nhu','dong'],'😮':['phat']},cm:[{who:'phat',t:'Mai lấy lại hạng 😤'}]},
     {id:'f3',who:'phi',kind:'skill',text:'mở khóa <b>Straddle front lever</b>, giữ được 3 × 8s',ts:now-26*H,re:{'🔥':['leo','dong','becky','phat','nhu','quay','nhat','dai','ngoc'],'😮':['quay']},cm:[]},
     {id:'f4',who:'nhu',kind:'streak',text:'đạt chuỗi <b>28 ngày</b> tập liên tục',ts:now-30*H,re:{'🔥':['phi','becky'],'👏':['leo','quay']},cm:[]},
     {id:'f5',who:'phi',kind:'meet',text:'và 6 người khác đã check-in buổi <b>Push day</b> tại Công viên Lê Văn Tám',ts:now-3*24*H,re:{'💪':['leo','dong','phat','nhu']},cm:[{who:'quay',t:'Tuần này em đi được rồi'}]}
   ];
 
-  const daily={};daily[TODAY]={phi:{checked:[1,1,1,1],status:'done'},dong:{checked:[1,1,0,1],skips:{2:'Đau gối, hôm nay để gối nghỉ'},status:'done'},nhu:{checked:[1,1,1,1],status:'done'},nhat:{checked:[1,1,1,1],status:'done'},dai:{checked:[1,1,1,1],status:'done'},phat:{checked:[],status:'rest'},leo:{checked:[1],status:null}};
+  const daily={};daily[TODAY]={phi:{checked:[1,1,1,1],status:'done'},dong:{mode:'self',checked:[1,1,0,1],skips:{2:'Đau gối, hôm nay để gối nghỉ'},status:'done'},nhu:{checked:[1,1,1,1],status:'done'},nhat:{mode:'self',checked:[1,1,1,1],status:'done'},dai:{mode:'self',checked:[1,1,1,1],status:'done'},phat:{checked:[],status:'rest'},leo:{checked:[1],status:null}};
   const pokes={};pokes[TODAY]={'phi>leo':1};
-  return{ver:7,seedDate:TODAY,me:'leo',members,challenges,sessions,assignments,feed,daily,pokes,groupStreak:4,groupDone:null};
+  return{ver:9,seedDate:TODAY,me:'leo',members,challenges,sessions,assignments,feed,daily,pokes,groupStreak:4,groupDone:null};
 }
 
 /* ---------- state ---------- */
 const KEY='calis-lvt-proto-v2';
 let S,old=null;
-try{const raw=localStorage.getItem(KEY);if(raw){const s=JSON.parse(raw);if(s&&s.ver===7&&s.seedDate===TODAY)S=s;else old=s}}catch(e){}
+try{const raw=localStorage.getItem(KEY);if(raw){const s=JSON.parse(raw);if(s&&s.ver===9&&s.seedDate===TODAY)S=s;else old=s}}catch(e){}
 if(!S){S=seed();if(old){if(old.media)S.media=old.media;if(old.combos)S.combos=old.combos;if(old.lessons)S.lessons=old.lessons;if(old.recurring)S.recurring=old.recurring;if(old.invite)S.invite=old.invite;if(old.plans)S.plans=old.plans}}
 S.media=S.media||{cover:null,avatars:{},album:[]};
 S.combos=S.combos||[{id:'5md',code:'5md',parts:[{ex:'pullup',reps:5},{ex:'pushup',reps:10}]}];
 S.lessons=S.lessons||defaultLessons();
+if(!S.lessons.some(l=>l.id==='l-core'))S.lessons.unshift(defaultLessons().find(l=>l.id==='l-core'));
 S.recurring=S.recurring||{days:[2,4],time:'18:00'};
 // Buổi tập chung cố định: tự tạo cho 14 ngày tới theo các thứ trưởng nhóm chọn.
 function ensureRecurring(){const R=S.recurring;
@@ -616,7 +698,7 @@ function dayPicker(scope,id,p){const every=p.days.length===7;
     <button type="button" data-act="pmode" data-scope="${scope}" data-id="${id}" data-v="pick" aria-pressed="${!every}">Chọn ngày trong tuần</button></div>
   ${every?'':`<div class="daypick">${ORDER.map(d=>`<button type="button" class="dp" data-act="pday" data-scope="${scope}" data-id="${id}" data-d="${d}" aria-pressed="${p.days.includes(d)}" aria-label="${WDL[d]}">${WD[d]}</button>`).join('')}</div>`}`}
 const isPlanRest=(m,ds)=>restOnPlan(planOf(m),ds);
-// done = đã tập · rest = nghỉ đột xuất (dùng đóng băng) · plan = nghỉ theo lịch · null = chưa tập
+// done = đã tập · rest = nghỉ ngoài lịch (người tập mỗi ngày sẽ mất chuỗi) · plan = nghỉ theo lịch · null = chưa tập
 function statusOf(m){const st=S.daily[TODAY]&&S.daily[TODAY][m.id]&&S.daily[TODAY][m.id].status;return st||(isPlanRest(m,TODAY)?'plan':null)}
 const planPreview=p=>`<span class="pp" aria-label="7 ngày tới">${[0,1,2,3,4,5,6].map(i=>{const ds=off(i);return`<i class="${restOnPlan(p,ds)?'r':''}" title="${fmtD(ds)}: ${restOnPlan(p,ds)?'nghỉ':'tập'}">${i===0?'Nay':WD[parse(ds).getDay()]}</i>`}).join('')}</span>`;
 const isLeader=()=>me().role==='leader';
@@ -659,13 +741,20 @@ let toastT;function toast(msg){const t=document.getElementById('toast');t.textCo
 
 /* ---------- challenge math ---------- */
 const cStatus=c=>c.start>TODAY?'soon':c.end<TODAY?'done':'live';
+// Challenge cam kết: đếm số ngày đã tập trong kỳ, so với mức tối thiểu (vd 75% số ngày).
+function commitInfo(c,id){const p=c.progress[id]||{},days=(p.days||[]).filter(d=>d>=c.start&&d<=c.end),total=between(c.start,c.end)+1;
+  let elapsed=TODAY<c.start?0:between(c.start,TODAY<c.end?TODAY:c.end)+1;if(TODAY>=c.start&&TODAY<=c.end&&!days.includes(TODAY))elapsed--;
+  let left=0;if(TODAY<c.start)left=total;else if(TODAY<=c.end)left=between(TODAY,c.end)+1-(days.includes(TODAY)?1:0);
+  const need=Math.ceil(c.minRate*total);
+  return{done:days.length,total,need,left,rate:elapsed>0?days.length/elapsed:1,possible:days.length+left>=need,pass:days.length>=need}}
 function score(c,id){const p=c.progress[id]||{v:0,b:0};
+  if(c.type==='commit'){const ci=commitInfo(c,id);return{abs:ci.done,pct:Math.min(1,ci.rate)}}
   if(c.type==='total')return{abs:p.v,pct:c.target?p.v/c.target:0};
   if(c.type==='progress')return{abs:p.v,pct:p.b?(p.v-p.b)/p.b:0};
   const days=Math.max(1,between(c.start,TODAY<c.end?TODAY:c.end)+1);return{abs:p.v,pct:Math.min(1,p.v/days)}}
-const defMode=c=>c.type==='progress'?'pct':'abs';
+const defMode=c=>c.type==='progress'||c.type==='commit'?'pct':'abs';
 function ranking(c,mode){mode=mode||defMode(c);return c.participants.map(id=>({id,...score(c,id)})).sort((a,b)=>b[mode]-a[mode]||a.id.localeCompare(b.id))}
-const unitOf=c=>c.type==='consistency'?'ngày':(EX[c.ex].u==='s'?'giây':'rep');
+const unitOf=c=>c.type==='consistency'||c.type==='commit'?'ngày':(EX[c.ex].u==='s'?'giây':'rep');
 
 /* ---------- icons ---------- */
 const I={group:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>',
@@ -737,7 +826,7 @@ function exItem(a,d,i,it){
 function skipNotes(a,ids){const out=[];
   ids.forEach(id=>{const d=(S.daily[TODAY]||{})[id];if(!d||!d.skips)return;for(const i in d.skips){const it=a.items[i];if(it)out.push(`<b>${esc(M(id).name)}</b> bỏ qua ${esc(exI(it.ex).n)}: ${esc(d.skips[i])}`)}});
   return out.length?`<div class="skip-list">${out.map(x=>`<p class="small">${x}</p>`).join('')}</div>`:''}
-function vToday(){
+function habitCard(){
   const m=me(),d=day(m.id),a=assignmentFor(m.id);
   const pokers=S.members.filter(x=>(S.pokes[TODAY]||{})[x.id+'>'+m.id]);
   const before=d.status==='done'?m.streak-1:m.streak;
@@ -750,7 +839,7 @@ function vToday(){
   for(let i=6;i>=0;i--){const ds=parse(off(-i));
     const st=dayState(m,off(-i));
     week+=`<div class="wk ${st}${i===0?' today':''}"><span class="wk-l">${i===0?'Nay':WD[ds.getDay()]}</span><span class="wk-c">${st==='done'?CHECK:st==='rest'?'–':ds.getDate()}</span></div>`}
-  const streakLine=lit?'Đã giữ lửa hôm nay':ts==='plan'?'Ngày nghỉ theo lịch, chuỗi vẫn được giữ':ts==='rest'?'Nghỉ đột xuất, đã dùng 1 lượt đóng băng':`Tập hôm nay để lên ${m.streak+1} ngày`;
+  const streakLine=lit?'Đã giữ lửa hôm nay':ts==='plan'?'Ngày nghỉ theo lịch, chuỗi vẫn được giữ':ts==='rest'?'Hôm nay nghỉ, chuỗi bắt đầu lại từ ngày mai':`Tập hôm nay để lên ${m.streak+1} ngày`;
   const doneCount=S.members.filter(x=>statusOf(x)).length;
   const pending=S.members.filter(x=>x.id!==m.id&&!statusOf(x));
   const next=S.sessions.filter(x=>x.date>=TODAY&&!x.cancelled).sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time))[0];
@@ -762,9 +851,9 @@ function vToday(){
       <div>${a.items.map((it,i)=>exItem(a,d,i,it)).join('')}</div>
       ${a.note?`<div class="note"><b>Phi Le:</b> ${esc(a.note)}</div>`:''}
       ${d.status==='done'?`<div class="note" style="background:var(--good-soft)">Xong bài hôm nay${nSk?' (bỏ qua '+nSk+' bài)':''}.${isDaily(m)?` Chuỗi của bạn: <b>${m.streak} ngày</b>.`:''}</div>`
-       :d.status==='rest'?`<div class="note">${isDaily(m)?'Bạn đã nghỉ đột xuất hôm nay (dùng 1 lượt đóng băng). Chuỗi vẫn được giữ.':'Bạn đã báo nghỉ hôm nay.'}</div>`
+       :d.status==='rest'?`<div class="note">${isDaily(m)?'Bạn nghỉ hôm nay. Chuỗi bắt đầu lại từ ngày mai.':'Bạn đã báo nghỉ hôm nay.'}</div>`
        :`<button class="btn pri block" data-act="complete" ${all?'':'disabled'}>${all?(nSk?'Hoàn thành (bỏ qua '+nSk+' bài)':'Hoàn thành buổi tập'):'Tick hoặc bỏ qua hết các bài để hoàn thành'}</button>
-         ${isDaily(m)?`<button class="btn ghost sm" data-act="rest" ${m.freezes?'':'disabled'} style="align-self:center">${m.freezes?'Nghỉ đột xuất (dùng 1 lượt đóng băng)':'Hết lượt đóng băng, nghỉ hôm nay sẽ mất chuỗi'}</button>`:'<button class="btn ghost sm" data-act="rest" style="align-self:center">Hôm nay nghỉ</button>'}`}
+         ${isDaily(m)?`<button class="btn ghost sm" data-act="rest" style="align-self:center">Nghỉ hôm nay (chuỗi ${m.streak} ngày sẽ về 0)</button>`:'<button class="btn ghost sm" data-act="rest" style="align-self:center">Hôm nay nghỉ</button>'}`}
     </div>`}
   if(ts==='plan'&&!ui.volTrain){let nx=1;while(nx<14&&isPlanRest(m,off(nx)))nx++;
     work=`<div class="card"><div class="sec-h"><h3>Hôm nay nghỉ</h3><span class="pill">${planLabel(planOf(m))}</span></div>
@@ -783,9 +872,9 @@ function vToday(){
     <div class="week" aria-label="7 ngày gần nhất">${week}</div>
     <div class="sc-foot">
       <div class="grow"><div class="sc-m small"><span>Mục tiêu ${goal} ngày</span><span class="${goalDone?'':'muted'}" style="${goalDone?'color:var(--good)':''}">${goalDone?'Đã đạt, chọn mục tiêu mới':'còn '+(goal-m.streak)+' ngày'}</span></div><div class="bar sc-bar"><i style="width:${Math.min(100,m.streak/goal*100)}%"></i></div></div>
-      <span class="pill" title="Lượt đóng băng chuỗi">${SNOW}${m.freezes}</span><a class="pill" href="#me" title="Đổi ngày tập trong tab Tôi">${planLabel(planOf(m))}</a>
+      <a class="pill" href="#me" title="Đổi ngày tập trong tab Tôi">${planLabel(planOf(m))}</a>
     </div>
-    <button class="btn sm sc-toggle" data-act="streakopen" aria-expanded="${!!ui.streakOpen}">Thu gọn</button>
+    <button class="btn sm sc-toggle" data-act="streakopen" aria-expanded="${!!ui.streakOpen}">${ui.streakOpen?'Thu gọn':'Xem cả tháng · Đặt mục tiêu'}</button>
     ${ui.streakOpen?`${monthCal(m)}
     <div class="goal-set"><span class="lab">Mục tiêu chuỗi của bạn</span>
       <div class="chips">${[14,30,50,100,200,365].map(g=>`<button class="chip" data-act="goal" data-v="${g}" aria-pressed="${goal===g}" ${g<=m.streak?'title="Bạn đã vượt mốc này"':''}>${g} ngày</button>`).join('')}</div>
@@ -800,24 +889,119 @@ function vToday(){
     <div class="sec-h"><h3>Tuần này</h3><a class="pill" href="#me" title="Đổi ngày tập trong tab Tôi">${planLabel(planOf(m))}</a></div>
     <div class="week" aria-label="Lịch tập tuần này">${wkc}</div>
     <div class="sc-foot"><div class="grow"><div class="sc-m small"><span>Đã tập ${doneW}/${planned} buổi</span><span class="muted">${ts==='done'?'Xong hôm nay':ts?'Hôm nay nghỉ':'Hôm nay là ngày tập'}${leftW?' · còn '+leftW+' buổi':''}</span></div><div class="bar sc-bar"><i style="width:${Math.min(100,doneW/Math.max(1,planned)*100)}%"></i></div></div></div>
-    <button class="btn sm sc-toggle" data-act="streakopen" aria-expanded="${!!ui.streakOpen}">Thu gọn</button>
+    <button class="btn sm sc-toggle" data-act="streakopen" aria-expanded="${!!ui.streakOpen}">${ui.streakOpen?'Thu gọn':'Xem cả tháng · Lịch sử tập'}</button>
     ${ui.streakOpen?monthCal(m)+historyList(m):''}
   </div>`;
+  return isDaily(m)?streakHTML:weekHTML;
+}
+
+function todayWork(){
+  const m=me(),d=day(m.id),a=assignmentFor(m.id),ts=statusOf(m);
+  let work;
+  if(!a)work=`<div class="card"><h3>Bài hôm nay</h3><p class="muted">Anh Phi Le chưa giao bài cho bạn hôm nay.</p></div>`;
+  else{const skips=d.skips||{},nSk=Object.keys(skips).length,all=a.items.every((_,i)=>d.checked[i]||skips[i]!=null);
+    work=`<div class="card">
+      <div class="sec-h"><h3>Bài hôm nay</h3><span class="small muted">${a.target.type==='member'?'Bài riêng cho bạn':'Nhóm '+LEVELS[a.target.id]}</span></div>
+      <div>${a.items.map((it,i)=>exItem(a,d,i,it)).join('')}</div>
+      ${a.note?`<div class="note"><b>Phi Le:</b> ${esc(a.note)}</div>`:''}
+      ${d.status==='done'?`<div class="note" style="background:var(--good-soft)">Xong bài hôm nay${nSk?' (bỏ qua '+nSk+' bài)':''}.${isDaily(m)?` Chuỗi của bạn: <b>${m.streak} ngày</b>.`:''}</div>`
+       :d.status==='rest'?`<div class="note">${isDaily(m)?'Bạn nghỉ hôm nay. Chuỗi bắt đầu lại từ ngày mai.':'Bạn đã báo nghỉ hôm nay.'}</div>`
+       :`<button class="btn pri block" data-act="complete" ${all?'':'disabled'}>${all?(nSk?'Hoàn thành (bỏ qua '+nSk+' bài)':'Hoàn thành buổi tập'):'Tick hoặc bỏ qua hết các bài để hoàn thành'}</button>
+         ${isDaily(m)?`<button class="btn ghost sm" data-act="rest" style="align-self:center">Nghỉ hôm nay (chuỗi ${m.streak} ngày sẽ về 0)</button>`:'<button class="btn ghost sm" data-act="rest" style="align-self:center">Hôm nay nghỉ</button>'}`}
+    </div>`}
+  if(ts==='plan'&&!ui.volTrain&&!['park','self'].includes(modeOf(m.id,TODAY))){let nx=1;while(nx<14&&isPlanRest(m,off(nx)))nx++;
+    work=`<div class="card"><div class="sec-h"><h3>Hôm nay nghỉ</h3><span class="pill">${planLabel(planOf(m))}</span></div>
+      <p>${S.plans.member[m.id]&&S.plans.member[m.id].self?'Theo lịch bạn chọn':'Theo lịch của nhóm'}, hôm nay là ngày nghỉ để cơ phục hồi.</p>
+      <div class="note">Gợi ý: đi bộ nhẹ 20 phút, giãn cơ vai và hông 10 phút, ngủ đủ 7–8 tiếng.</div>
+      <p class="small muted">Buổi tập tiếp theo: <b>${fmtD(off(nx))}</b></p>
+      ${a?'<button class="btn" data-act="voltrain">Vẫn muốn tập hôm nay</button>':'<button class="btn" data-act="volfree">Hôm nay tôi vẫn tập</button>'}</div>`}
+  return work;
+}
+
+// ===== Lịch (màn hình chính) =====
+// Ai làm gì vào một ngày: 'park' tập ở công viên · 'self' tự tập · 'rest' nghỉ · null chưa xác nhận
+function dayOf(id,ds){S.daily[ds]=S.daily[ds]||{};return S.daily[ds][id]=S.daily[ds][id]||{checked:[],status:null}}
+function sessionOn(ds){return S.sessions.filter(x=>x.date===ds).sort((x,y)=>(x.cancelled?1:0)-(y.cancelled?1:0)||x.time.localeCompare(y.time))[0]}
+function modeOf(id,ds){const d=(S.daily[ds]||{})[id];if(d&&d.mode)return d.mode;const se=sessionOn(ds);
+  if(se&&!se.cancelled&&se.rsvp[id]==='yes')return'park';if(d&&d.status==='rest')return'rest';return null}
+function weekCount(m){const mon=off(-((T0.getDay()+6)%7));let p=0,dn=0;
+  for(let i=0;i<7;i++){const ds=iso(parse(mon).getTime()+i*DAY);if(!isPlanRest(m,ds))p++;if(weekState(m,ds)==='done')dn++}return[dn,p]}
+const MODE_LABEL={park:'Tập ở công viên',self:'Tự tập',rest:'Nghỉ'};
+const TREE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-6M8 16h8a4 4 0 0 0 1-7.9A5 5 0 0 0 7.1 7 4.5 4.5 0 0 0 8 16z"/></svg>';
+const HOUSE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>';
+const FLAME_S='<svg viewBox="0 0 24 24" aria-hidden="true" width="13" height="13"><path fill="currentColor" d="M12.6 2.2c.5 3 2.4 4.6 3.9 6.3 1.4 1.6 2.5 3.3 2.5 5.8A7 7 0 0 1 5 14.3c0-2.6 1.2-4.4 2.7-5.8.1 1.6.8 2.8 2 3.4-.3-3.6.9-6.9 2.9-9.7z"/></svg>';
+
+function calWeek(m,sel){
+  const wk=ui.calWeek||0,mon=off(-((T0.getDay()+6)%7)+7*wk);
+  const days=Array.from({length:7},(_,i)=>iso(parse(mon).getTime()+i*DAY));
+  const lab=wk===0?'Tuần này':wk===1?'Tuần sau':wk===-1?'Tuần trước':fmtS(days[0])+' – '+fmtS(days[6]);
+  return`<div class="card cal-card">
+    <div class="cal-top"><button class="btn ghost sm" data-act="calw" data-v="-1" aria-label="Tuần trước" ${wk<=-4?'disabled':''}>‹</button><b>${lab}</b><button class="btn ghost sm" data-act="calw" data-v="1" aria-label="Tuần sau" ${wk>=4?'disabled':''}>›</button></div>
+    <div class="cal-row">${days.map(ds=>{const d0=parse(ds),se=sessionOn(ds),md=modeOf(m.id,ds),dn=((S.daily[ds]||{})[m.id]||{}).status==='done';
+      return`<button class="cal-d ${ds===sel?'sel':''} ${ds===TODAY?'today':''} ${ds<TODAY?'past':''}" data-act="seldate" data-v="${ds}" aria-pressed="${ds===sel}" aria-label="${fmtD(ds)}${se?(se.cancelled?', buổi công viên đã hủy':', có buổi ở công viên'):''}${ds>=TODAY&&(dn||md==='park'||md==='self')?', bạn sẽ tập':''}">
+        <small>${ds===TODAY?'Nay':WD[d0.getDay()]}</small><b>${d0.getDate()}</b>
+        <span class="mks">${se?`<i class="mk park ${se.cancelled?'cx':''}"></i>`:''}${ds>=TODAY&&(dn||md==='park'||md==='self')?'<i class="mk mine"></i>':''}</span></button>`}).join('')}</div>
+    <div class="cal-legend2"><span><i class="mk park"></i>Buổi ở công viên</span><span><i class="mk mine"></i>Bạn sẽ tập</span></div>
+  </div>`;
+}
+
+function vToday(){
+  const m=me(),ds=ui.selDate||TODAY,isT=ds===TODAY,past=ds<TODAY;
+  const se=sessionOn(ds),park=se&&!se.cancelled,myMode=modeOf(m.id,ds);
+  const dd=(S.daily[ds]||{})[m.id]||{},done=dd.status==='done';
+  const going=park?S.members.filter(x=>se.rsvp[x.id]==='yes'):[];
+  const pokers=S.members.filter(x=>(S.pokes[TODAY]||{})[x.id+'>'+m.id]);
+  const [wd,wp]=weekCount(m);
+  // ---- chính: buổi tập của ngày đang chọn
+  const head=park?`<div class="hero-top"><span class="hp-ic">${TREE}</span><div class="grow"><span class="lab">Tập ở công viên</span><b class="hp-t">${se.time} · ${esc(se.title)}</b>
+      <p class="small muted">${esc(se.place||'Công viên Lê Văn Tám')} · <a href="${MAPS}" target="_blank" rel="noopener">Chỉ đường</a></p></div></div>
+    <div class="goers"><div class="stack">${going.slice(0,8).map(x=>av(x,'sm')).join('')}</div><span class="small"><b>${going.length} người sẽ tập</b>${going.length?': '+going.map(x=>x.id===m.id?'Bạn':esc(x.name)).join(', '):''}</span></div>`
+   :se?`<div class="hero-top cx"><span class="hp-ic">${TREE}</span><div class="grow"><span class="lab">Buổi tập ở công viên đã hủy</span><b class="hp-t">${se.time} · ${esc(se.title)}</b><p class="small">Lý do: ${esc(se.cancelled.reason)}</p></div></div>`
+   :`<div class="hero-top none"><span class="hp-ic">${HOUSE}</span><div class="grow"><span class="lab">${isT?'Hôm nay':'Ngày này'} không có buổi ở công viên</span><b class="hp-t">${isPlanRest(m,ds)?'Ngày nghỉ theo lịch của bạn':'Ngày tập của bạn'}</b></div></div>`;
+  let confirm;
+  if(past)confirm=`<p class="small muted">${done?'Bạn đã tập xong ngày này.':myMode?'Bạn đã chọn: '+MODE_LABEL[myMode]+'.':'Bạn không xác nhận ngày này.'}</p>`;
+  else if(done)confirm=`<div class="my-state done">Đã hoàn thành buổi tập${myMode==='park'?' ở công viên':''}</div>`;
+  else if(myMode)confirm=`<div class="my-state ${myMode}"><span>Bạn: <b>${MODE_LABEL[myMode]}</b>${myMode==='park'&&isT&&se&&se.checkins.includes(m.id)?' · đã check-in':''}</span><button class="btn ghost sm" data-act="clearmode">Đổi</button></div>
+      ${myMode==='park'&&isT&&park&&!se.checkins.includes(m.id)?`<button class="btn flame block" data-act="checkin" data-id="${se.id}">Check-in khi đến công viên</button>`:''}`;
+  else confirm=`<p class="ask"><b>${isT?'Hôm nay':fmtD(ds)} bạn tập thế nào?</b></p>
+    <div class="confirm-btns">${park?'<button class="btn pri" data-act="setmode" data-v="park">Tập ở công viên</button>':''}<button class="btn ${park?'':'pri'}" data-act="setmode" data-v="self">Tự tập</button><button class="btn" data-act="setmode" data-v="rest">Nghỉ</button></div>${isDaily(m)&&isT?`<p class="small muted">Bạn chọn tập mỗi ngày: nghỉ hôm nay thì chuỗi ${m.streak} ngày về 0.</p>`:''}`;
+  // ---- thứ cấp 1: nội dung buổi tập
+  const active=myMode==='park'||myMode==='self'||done;
+  const showC=active||ui.showContent===ds;
+  const a=assignmentFor(m.id,ds);
+  let content='';
+  if(showC){
+    if(isT&&active)content=(park&&se.plan?`<div class="note park-note"><b>Buổi ở công viên:</b> ${esc(se.plan)}</div>`:'')+todayWork();
+    else content=`<div class="card"><div class="sec-h"><h3>Nội dung buổi tập</h3>${a?`<span class="small muted">${a.target.type==='member'?'Bài riêng cho bạn':'Nhóm '+LEVELS[a.target.id]}</span>`:''}</div>
+      ${park&&se.plan?`<div class="note"><b>Buổi ở công viên:</b> ${esc(se.plan)}</div>`:''}
+      ${a?lessonSections(a.items)+(a.note?`<div class="note"><b>Phi Le:</b> ${esc(a.note)}</div>`:''):'<p class="muted small">Anh Phi Le chưa giao bài cho ngày này.</p>'}
+      ${!active&&!past?'<p class="small muted">Xác nhận tập ở trên để bắt đầu tick bài.</p>':''}
+      ${!active?'<button class="btn ghost sm" data-act="showcontent" style="align-self:flex-start">Ẩn nội dung</button>':''}</div>`}
+  // ---- ai tập ngày này
+  const G={park:[],self:[],rest:[],none:[]};
+  S.members.forEach(x=>{const md=modeOf(x.id,ds);G[md||(isPlanRest(x,ds)?'rest':'none')].push(x)});
+  const isDone=x=>((S.daily[ds]||{})[x.id]||{}).status==='done';
+  const ppl=list=>list.map(x=>`<div class="crew-i" title="${esc(x.name)}${isDone(x)?': đã tập xong':''}"><span class="ring ${isDone(x)?'done':'todo2'}">${av(x)}</span><span class="crew-n">${x.id===m.id?'Bạn':esc(x.name)}</span></div>`).join('');
+  const pokeList=G.none.map(x=>{if(x.id===m.id||!isT)return`<div class="crew-i"><span class="ring todo">${av(x)}</span><span class="crew-n">${x.id===m.id?'Bạn':esc(x.name)}</span></div>`;
+    const poked=(S.pokes[TODAY]||{})[m.id+'>'+x.id];
+    return`<button class="crew-i poke" data-act="poke" data-id="${x.id}" ${poked?'disabled':''} title="${poked?'Đã nhắc':'Nhắc'} ${esc(x.name)}"><span class="ring todo">${av(x)}</span><span class="crew-n">${esc(x.name)}</span><span class="poke-b">${poked?'Đã nhắc':'Nhắc'}</span></button>`}).join('');
+  const grp=(k,lab,html)=>G[k].length?`<div class="who-g"><span class="lab">${lab} · ${G[k].length}</span><div class="crew">${html}</div></div>`:'';
   return`
-  <div><p class="small muted">${WDL[T0.getDay()]}, ${fmtS(TODAY)}</p><h2>Chào ${esc(m.name)}</h2></div>
-  <button class="mini-row ${lit?'lit':''}" data-act="streakopen" aria-expanded="${!!ui.streakOpen}">${isDaily(m)
-      ?`<span class="mr-flame">${FLAME}</span><span class="grow"><b>${m.streak} ngày liên tục</b> <span class="muted">· ${lit?'đã giữ lửa hôm nay':ts?'hôm nay nghỉ':'tập hôm nay để giữ lửa'}</span></span>`
-      :`<span class="mr-week">${doneW}/${planned}</span><span class="grow"><b>Tuần này ${doneW}/${planned} buổi</b> <span class="muted">· ${ts==='done'?'xong hôm nay':ts?'hôm nay nghỉ':'hôm nay là ngày tập'}</span></span>`}<span class="chev">${ui.streakOpen?'−':'›'}</span></button>
-  ${ui.streakOpen?(isDaily(m)?streakHTML:weekHTML):''}
-  ${pokers.length&&!ts?`<div class="banner">${av(pokers[0],'sm')}<span><b>${esc(pokers.map(p=>p.name).join(', '))}</b> nhắc bạn: ${isDaily(m)?'"Chuỗi '+m.streak+' ngày sắp mất đấy!"':'"Hôm nay là ngày tập đấy!"'}</span></div>`:''}
-  ${work}
-  ${isLeader()?`<a class="card link-card lead-card" href="#assign"><div class="grow"><span class="lab">Trưởng nhóm</span><b>Giao bài</b><p class="small muted">${S.assignments.filter(x=>x.date===TODAY).length} bài đã giao hôm nay · ${doneCount}/${S.members.length} người xong</p><p class="small muted">Nghỉ hôm nay: ${S.members.filter(x=>restingOn(x.id,TODAY)).map(x=>esc(x.name)).join(', ')||'không ai'}</p></div><span class="chev">›</span></a>`:''}
-  <div class="card">
-    <div class="sec-h"><h3>Cả nhóm hôm nay</h3><span class="small muted">${doneCount}/${S.members.length} xong · chuỗi nhóm ${S.groupStreak} ngày</span></div>
-    <div class="crew">${crew}</div>
-    <p class="small muted">${pending.length?'Bấm vào người chưa tập để nhắc. Viền xanh là đã tập, viền đứt là nghỉ.':'Những người khác đã xong hoặc đang nghỉ.'}</p>
+  <div class="row"><div class="grow"><p class="small muted">${WDL[T0.getDay()]}, ${fmtS(TODAY)}</p><h2>Chào ${esc(m.name)}</h2></div>
+    <a class="pill ${isDaily(m)?'flame':''}" href="#me" title="Xem streak và tiến độ trong tab Tôi">${isDaily(m)?FLAME_S+' '+m.streak+' ngày':'Tuần này '+wd+'/'+wp}</a></div>
+  ${isT&&pokers.length&&!statusOf(m)&&!myMode?`<div class="banner">${av(pokers[0],'sm')}<span><b>${esc(pokers.map(x=>x.name).join(', '))}</b> nhắc bạn xác nhận buổi tập hôm nay</span></div>`:''}
+  ${calWeek(m,ds)}
+  <div class="card hero ${park?'is-park':''}">
+    ${head}
+    ${confirm}
+    ${!showC?`<button class="disclose" data-act="showcontent"><span>Xem nội dung buổi tập</span><span class="chev">›</span></button>`:''}
   </div>
-  ${next?`<a class="card link-card" href="#schedule"><div class="grow"><span class="lab">Buổi tập chung tiếp theo</span><b>${esc(next.title)}</b><p class="small muted">${next.date===TODAY?'Hôm nay':fmtD(next.date)} · ${next.time} · ${Object.values(next.rsvp).filter(v=>v==='yes').length} người sẽ đến</p></div><span class="chev">›</span></a>`:''}`;
+  ${content}
+  <div class="card"><h3>${isT?'Cả nhóm hôm nay':'Cả nhóm · '+fmtD(ds)}</h3>
+    ${grp('park','Ở công viên',ppl(G.park))}${grp('self','Tự tập',ppl(G.self))}${grp('none',isT?'Chưa xác nhận · bấm để nhắc':'Chưa xác nhận',pokeList)}${grp('rest','Nghỉ',ppl(G.rest))}
+  </div>
+  ${isLeader()?`<a class="card link-card lead-card" href="#assign"><div class="grow"><span class="lab">Trưởng nhóm</span><b>Giao bài</b><p class="small muted">${S.assignments.filter(x=>x.date===TODAY).length} bài đã giao hôm nay</p></div><span class="chev">›</span></a>`:''}
+  <a class="card link-card" href="#schedule"><div class="grow"><span class="lab">Tập chung</span><b>Tất cả buổi ở công viên</b><p class="small muted">Lịch cố định ${S.recurring.days.length?ORDER.filter(x=>S.recurring.days.includes(x)).map(x=>WD[x]).join(' · '):'chưa đặt'} · ${S.recurring.time} · ảnh các buổi tập</p></div><span class="chev">›</span></a>`;
 }
 
 function coverCard(){
@@ -862,7 +1046,7 @@ function chalCard(c){
   const st=cStatus(c),n=S.members.length,rk=ranking(c),lead=rk[0],myR=rk.findIndex(r=>r.id===S.me)+1;
   const sum=c.participants.reduce((a,id)=>a+(c.progress[id]||{v:0}).v,0);
   const when=st==='live'?`Còn ${between(TODAY,c.end)} ngày`:st==='soon'?`Bắt đầu ${fmtS(c.start)}`:'Đã kết thúc';
-  const info=[c.participants.length+'/'+n+' tham gia'];
+  const info=[c.participants.length+'/'+n+' tham gia'];if(c.type==='commit')info.push('cần ≥ '+Math.round(c.minRate*100)+'% số ngày');
   if(st!=='soon'&&lead)info.push((st==='done'?'vô địch ':'dẫn đầu ')+M(lead.id).name);
   if(st!=='soon'&&myR)info.push('bạn hạng '+myR);
   return`<button class="card ch" data-act="openc" data-id="${c.id}">
@@ -894,13 +1078,17 @@ function formChallenge(){
   return`<form class="card" data-form="challenge">
     <label class="field"><span>Tên challenge</span><input type="text" id="cf-name" placeholder="VD: Tháng 12 – 10.000 Push-up" required></label>
     <div class="grid2">
-      <label class="field"><span>Loại</span><select id="cf-type"><option value="total">Tích lũy rep</option><option value="progress">Tiến bộ %</option><option value="consistency">Kiên trì (số ngày)</option></select></label>
+      <label class="field"><span>Loại</span><select id="cf-type"><option value="total">Tích lũy rep</option><option value="progress">Tiến bộ %</option><option value="consistency">Kiên trì (số ngày)</option><option value="commit">Cam kết (tỉ lệ tham gia, ảnh trước/sau)</option></select></label>
       <label class="field"><span>Bài tập</span><select id="cf-ex">${exOpts}</select></label>
       <label class="field"><span>Bắt đầu</span><input type="date" id="cf-start" value="${off(1)}"></label>
       <label class="field"><span>Kết thúc</span><input type="date" id="cf-end" value="${off(30)}"></label>
     </div>
     <label class="field"><span>Mục tiêu mỗi người</span><input type="number" id="cf-target" min="0" value="1000"></label>
     <details class="fold"><summary>Thêm tùy chọn</summary><div class="sec">
+      <p class="small muted">Cho loại Cam kết:</p>
+      <label class="field"><span>Tỉ lệ tham gia tối thiểu (%)</span><input type="number" id="cf-min" min="10" max="100" value="75"></label>
+      <label class="field"><span>Hình phạt nếu dưới mức</span><input type="text" id="cf-penalty" placeholder="VD: Bao nước cả nhóm sau buổi tập chung"></label>
+      <label class="field"><span>Bài tập của challenge</span><select id="cf-lesson">${S.lessons.map(l=>`<option value="${l.id}">${esc(l.name)}</option>`).join('')}</select></label>
       <label class="field"><span>Mục tiêu cả nhóm</span><input type="number" id="cf-team" min="0" value="7000"></label>
       <label class="field"><span>Luật và mô tả</span><textarea id="cf-desc" placeholder="Cách tính rep, yêu cầu form…"></textarea></label>
       <label class="field"><span>Phần thưởng</span><input type="text" id="cf-reward" placeholder="VD: Người về chót bao cà phê"></label>
@@ -911,7 +1099,52 @@ function formChallenge(){
   </form>`;
 }
 
+function vCommit(c){
+  const m=me(),st=cStatus(c),joined=c.participants.includes(m.id),p=c.progress[m.id]||{},info=commitInfo(c,m.id);
+  const pct=Math.round(c.minRate*100),L=S.lessons.find(l=>l.id===c.lesson),doneToday=(p.days||[]).includes(TODAY);
+  const cp=(S.media.cp||{})[c.id]||{};
+  const ph=(id,k)=>{const u=cp[id]&&cp[id][k];return u?`<img src="${u}" alt="Ảnh ${k==='before'?'trước':'sau'} của ${esc(M(id).name)}">`:(c.progress[id]||{})[k]==='sample'?'<span class="ph-sample">Ảnh mẫu</span>':''};
+  const afterFrom=iso(parse(c.end).getTime()-2*DAY),afterOpen=TODAY>=afterFrom;
+  const head=`<button class="btn ghost" data-act="backc" style="align-self:flex-start">← Tất cả challenge</button>
+  <div class="sec"><span class="pill ${st==='live'?'good':''}" style="align-self:flex-start">${CTYPE[c.type]} · cần ≥ ${pct}% số ngày</span><h2 style="text-transform:none;font-size:1.9rem">${esc(c.name)}</h2>
+  <p class="muted small">${fmtD(c.start)} → ${fmtD(c.end)} · ${info.total} ngày · tạo bởi ${esc(M(c.by).name)}</p></div>`;
+  const rules=`<div class="card">
+    ${c.desc?`<p>${esc(c.desc)}</p>`:''}
+    <div class="rules">
+      <div><span class="lab">Yêu cầu</span><p>Tập ít nhất <b>${pct}% số ngày</b> (${info.need}/${info.total} ngày)</p></div>
+      <div><span class="lab">Dưới ${pct}%</span><p>${esc(c.penalty||'Chưa đặt hình phạt')}</p></div>
+      <div><span class="lab">Ảnh</span><p>Nộp ảnh bụng lúc tham gia và lúc kết thúc</p></div>
+      ${c.reward?`<div><span class="lab">Phần thưởng</span><p>${esc(c.reward)}</p></div>`:''}
+    </div>
+    ${chalStats(c)}
+  </div>`;
+  const mine=!joined?(st==='done'?'':`<div class="card join-card"><h3>Tham gia challenge</h3>
+      <p class="small">Để tham gia, nộp <b>ảnh bụng trước khi bắt đầu</b>. Ảnh chỉ bạn và anh Phi Le xem được, không đăng lên bảng tin.</p>
+      <label class="btn pri" for="up-cb-${c.id}">Chụp hoặc chọn ảnh để tham gia</label><input type="file" accept="image/*" id="up-cb-${c.id}" hidden></div>`)
+   :`<div class="card"><div class="sec-h"><h3>Tiến độ của bạn</h3><span class="pill ${info.pass?'good':info.possible?'acc':'warn'}">${info.pass?'Đã đạt yêu cầu':info.possible?'Đang thực hiện':'Không thể đạt '+pct+'%'}</span></div>
+      <div class="commit-bar"><div class="bar"><i style="width:${info.done/info.total*100}%"></i></div><span class="cb-mark" style="left:${c.minRate*100}%" title="Mốc ${pct}%"></span></div>
+      <p class="small"><b>${info.done}/${info.total} ngày</b> · cần ${info.need} ngày · còn ${info.left} ngày · tỉ lệ hiện tại ${Math.round(info.rate*100)}%</p>
+      ${!info.possible&&!info.pass?`<div class="note rest-warn">Số ngày còn lại không đủ để đạt ${pct}%. Hình phạt: ${esc(c.penalty)}.</div>`:''}
+      ${st==='live'?`<button class="btn pri block" data-act="cday" data-id="${c.id}" ${doneToday?'disabled':''}>${doneToday?'Đã điểm danh hôm nay':'Tập xong bài core hôm nay · Điểm danh'}</button>`:''}
+      <div class="ba">
+        <div class="ba-i"><span class="lab">Ảnh trước</span><div class="ba-ph">${ph(m.id,'before')||'<span class="ph-sample">Chưa có</span>'}</div></div>
+        <div class="ba-i"><span class="lab">Ảnh sau</span><div class="ba-ph">${ph(m.id,'after')||(afterOpen?`<label class="btn sm" for="up-ca-${c.id}">Nộp ảnh sau</label><input type="file" accept="image/*" id="up-ca-${c.id}" hidden>`:`<span class="ph-sample">Mở từ ${fmtD(afterFrom)}</span>`)}</div></div>
+      </div>
+      <p class="small muted">Ảnh chỉ bạn và anh Phi Le xem được.</p></div>`;
+  const prog=`<div class="card"><div class="sec-h"><h3>Bài tập của challenge</h3><span class="small muted">Anh Phi Le soạn</span></div>
+    ${L?lessonSections(L.items)+(L.note?`<div class="note">${esc(L.note)}</div>`:''):'<p class="muted small">Chưa chọn bài tập.</p>'}
+    ${isLeader()?'<a class="btn ghost sm" href="#lessons" style="align-self:flex-start">Sửa bài trong Thư viện</a>':''}</div>`;
+  const rows=c.participants.map(id=>[id,commitInfo(c,id)]).sort((x,y)=>y[1].rate-x[1].rate||y[1].done-x[1].done).map(([id,ci])=>{const x=M(id),pp=c.progress[id]||{};
+    const ok=st==='done'?ci.pass:ci.rate>=c.minRate;
+    return`<div class="item">${av(x,'sm')}<div class="grow"><b>${esc(x.name)}</b>${id===m.id?' <span class="small muted">(bạn)</span>':''}<p class="small muted">${ci.done} ngày · ${Math.round(ci.rate*100)}%${pp.before?'':' · chưa nộp ảnh trước'}${st==='done'&&!pp.after?' · chưa nộp ảnh sau':''}</p></div>
+      ${isLeader()&&id!==m.id?`<div class="ba-mini">${ph(id,'before')||'<span class="ph-sample">–</span>'}${ph(id,'after')||'<span class="ph-sample">–</span>'}</div>`:''}
+      <span class="pill ${ok?'good':'warn'}">${st==='done'?(ci.pass?'Đạt':'Bị phạt'):ok?'Đúng tiến độ':'Dưới '+pct+'%'}</span></div>`}).join('');
+  const members=`<div class="card"><h3>Thành viên · ${c.participants.length}</h3><div class="list">${rows||'<p class="muted small">Chưa có ai tham gia.</p>'}</div>
+    <p class="small muted">Tỉ lệ = số ngày đã điểm danh / số ngày đã qua. Kết thúc challenge, ai dưới ${pct}% số ngày sẽ chịu hình phạt.${isLeader()?' Anh Phi Le thấy ảnh trước và sau của từng người.':''}</p></div>`;
+  return head+(joined?mine+prog:prog+mine)+rules+members;
+}
 function vChallenge(c){
+  if(c.type==='commit')return vCommit(c);
   const m=me(),st=cStatus(c),mode=ui.lb||defMode(c),u=unitOf(c);
   const rk=ranking(c,mode);
   const joined=c.participants.includes(m.id);
@@ -984,7 +1217,7 @@ function vSchedule(){
   const up=S.sessions.filter(s=>s.date>=TODAY).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
   const past=S.sessions.filter(s=>s.date<TODAY).sort((a,b)=>b.date.localeCompare(a.date));
   const m=me();
-  return`<div class="sec-h"><h2>Tập chung</h2>${isLeader()?`<button class="btn sm pri" data-act="news">${ui.newSess?'Đóng':'+ Thêm buổi'}</button>`:''}</div>
+  return`<a class="btn ghost" href="#today" style="align-self:flex-start">← Lịch</a><div class="sec-h"><h2>Tập chung</h2>${isLeader()?`<button class="btn sm pri" data-act="news">${ui.newSess?'Đóng':'+ Thêm buổi'}</button>`:''}</div>
   <p class="small muted">Bạn đã đi ${m.attended}/8 buổi gần nhất${m.attended>=5?' · huy hiệu Chiến binh công viên':''}</p>
   ${(()=>{const lab=(S.recurring.days.length?ORDER.filter(d=>S.recurring.days.includes(d)).map(d=>WD[d]).join(' · '):'Chưa chọn ngày')+' · '+S.recurring.time;
     return isLeader()?`<details class="card fold" ${ui.recOpen?'open':''}><summary>Lịch cố định hằng tuần: ${lab}</summary><div class="sec">
@@ -1037,6 +1270,21 @@ function selfPlanCard(m){
     <div class="row" style="flex-wrap:wrap"><button class="btn pri" data-act="ssave" ${changed?'':'disabled'}>Lưu, áp dụng từ ${fmtS(off(1))}</button>${own&&!(own.next&&own.next.toGroup)?'<button class="btn" data-act="sreset">Theo lịch nhóm</button>':''}</div>
   </div>`;
 }
+function strengthsCard(m){
+  const t=k=>last(m.tests[k]).v;
+  const cats=[['Kéo',(t('pullup')/20+t('hang')/120)/2],['Đẩy',(t('pushup')/50+t('dips')/30)/2],['Core',t('plank')/180]].map(([n,v])=>[n,Math.min(1,v)]);
+  const sorted=cats.slice().sort((x,y)=>y[1]-x[1]);
+  const bestSkill=Object.entries(SKILLS).map(([k,d])=>[d.n,m.skills[k].s,d.st[m.skills[k].s]]).sort((x,y)=>y[1]-x[1])[0];
+  return`<div class="card"><div class="sec-h"><h3>Thế mạnh</h3><span class="small muted">so với mốc mục tiêu</span></div>
+    <div class="str-list">${cats.map(([n,v])=>`<div class="str-row"><span class="str-n">${n}</span><div class="bar grow"><i style="width:${Math.round(v*100)}%"></i></div><span class="num str-v">${Math.round(v*100)}%</span></div>`).join('')}</div>
+    <p class="small">${sorted[0][1]-sorted[2][1]<.05?'Các nhóm cơ khá cân bằng ·':`<b>Mạnh nhất:</b> ${sorted[0][0]} · <b>Cần cải thiện:</b> ${sorted[2][0]} ·`} <b>Kỹ năng cao nhất:</b> ${bestSkill[0]} (${esc(bestSkill[2])})</p></div>`;
+}
+function myChallenges(m){
+  const mine=S.challenges.filter(c=>c.participants.includes(m.id)&&cStatus(c)!=='done');
+  if(!mine.length)return'';
+  return`<div class="card"><h3>Challenge của bạn</h3><div class="list">${mine.map(c=>{const st=cStatus(c),rk=ranking(c),r=rk.findIndex(x=>x.id===m.id)+1,sc=score(c,m.id);
+    return`<button class="item ch-mini" data-act="gochal" data-id="${c.id}"><div class="grow"><b>${esc(c.name)}</b><p class="small muted">${st==='soon'?'Bắt đầu '+fmtS(c.start):'Hạng '+r+'/'+rk.length+' · '+fmtN(sc.abs)+' '+unitOf(c)}</p></div><span class="chev">›</span></button>`}).join('')}</div></div>`;
+}
 function vProfile(){
   const m=me();
   const sv=strength(m).map(x=>x.v),sNow=last(sv),s4=back(sv,2);
@@ -1057,6 +1305,9 @@ function vProfile(){
   const opts=Object.entries(TESTS).map(([k,l])=>`<option value="t:${k}">${l}</option>`).join('')+Object.entries(BODY).map(([k,[l,u]])=>`<option value="b:${k}">${l} (${u})</option>`).join('');
   return`<div class="row"><label for="up-avatar" class="avedit">${av(m,'lg')}<span>Đổi ảnh</span></label><input type="file" accept="image/*" id="up-avatar" hidden>
     <div class="grow"><h2 style="text-transform:none;font-size:1.7rem">${esc(m.name)}</h2><p class="lvl">${m.role==='leader'?'Trưởng nhóm · ':''}Nhóm ${LEVELS[m.level]}</p></div>${isDaily(m)?`<span class="pill flame">Chuỗi ${m.streak} ngày</span>`:`<span class="pill">${planLabel(planOf(m))}</span>`}</div>
+  ${habitCard()}
+  ${strengthsCard(m)}
+  ${myChallenges(m)}
   ${selfPlanCard(m)}
   <div class="card score">
     <span class="lab">Điểm sức mạnh tương đối</span>
@@ -1187,7 +1438,7 @@ function vAssign(){
   ${planGrid}
   <div class="card"><div class="sec-h"><h3>Đã giao ${dr.date===TODAY?'hôm nay':'ngày '+fmtS(dr.date)}</h3></div>
     ${onDate.length?`<div class="list">${onDate.map(a=>{const ids=coveredBy(a);const done=ids.filter(id=>dr.date===TODAY&&day(id).status==='done').length;
-      return`<div class="item"><div class="grow"><b>${esc(targetLabel(a.target))}</b> <span class="small muted">${a.target.type==='member'?'· bài riêng':'· '+ids.map(id=>M(id).name).join(', ')}</span><p class="small muted">${a.items.map(it=>exI(it.ex).n+' '+dose(it)).join(' · ')}</p>${dr.date===TODAY?skipNotes(a,ids):''}</div>${dr.date===TODAY?`<span class="pill ${done===ids.length&&ids.length?'good':''}">${done}/${ids.length} xong</span>`:''}<button class="btn sm" data-act="dela" data-id="${a.id}" aria-label="Xóa bài">Xóa</button></div>`}).join('')}</div>`:'<p class="muted">Chưa giao bài nào cho ngày này.</p>'}
+      return`<div class="item asg-item"><div class="grow"><b>${esc(targetLabel(a.target))}</b> <span class="small muted">${a.target.type==='member'?'· bài riêng':'· '+ids.map(id=>M(id).name).join(', ')}</span><p class="small muted">${a.items.map(it=>exI(it.ex).n+' '+dose(it)).join(' · ')}</p>${dr.date===TODAY?skipNotes(a,ids):''}</div>${dr.date===TODAY?`<span class="pill ${done===ids.length&&ids.length?'good':''}">${done}/${ids.length} xong</span>`:''}<button class="btn sm" data-act="dela" data-id="${a.id}" aria-label="Xóa bài">Xóa</button></div>`}).join('')}</div>`:'<p class="muted">Chưa giao bài nào cho ngày này.</p>'}
     <p class="proto">Bài riêng cho một thành viên sẽ thay bài của nhóm level người đó trong ngày.</p>
   </div>
   <form class="card" data-form="assign"><h3>Giao bài mới</h3>
@@ -1205,7 +1456,8 @@ function vAssign(){
 }
 
 /* ---------- render ---------- */
-const TABS=[['today','Hôm nay'],['group','Nhóm'],['schedule','Tập chung'],['me','Tôi']];
+const TABS=[['today','Lịch'],['group','Nhóm'],['me','Tôi']];
+I.today=I.schedule;
 function render(){
   if((ui.tab==='assign'||ui.tab==='lessons')&&!isLeader())ui.tab='today';
   const sel=document.getElementById('me-select');
@@ -1216,7 +1468,7 @@ function render(){
   document.getElementById('view').innerHTML=v();
   const lb=document.getElementById('lb');let lbHtml='';
   if(ui.view){const isCover=ui.view==='cover',ph=isCover?null:S.media.album.find(x=>x.id===ui.view),src=isCover?S.media.cover:ph&&ph.url;
-    if(src){const w=ph&&M(ph.who);lbHtml=`<div class="lb" data-act="closeview" role="dialog" aria-label="Xem ảnh"><img src="${src}" alt="${esc(ph&&ph.cap||'Ảnh nhóm')}">
+    if(src){const w=ph&&M(ph.who);lbHtml=`<div class="lightbox" data-act="closeview" role="dialog" aria-label="Xem ảnh"><img src="${src}" alt="${esc(ph&&ph.cap||'Ảnh nhóm')}">
       <p class="small">${isCover?'Ảnh nhóm':esc(w.name)+' · '+ago(ph.ts)+(ph.cap?' · '+esc(ph.cap):'')}</p>
       <div class="row">${isCover?'<button class="btn sm" data-act="delcover">Gỡ ảnh nhóm</button>':ph.who===S.me?`<button class="btn sm" data-act="delph" data-id="${ph.id}">Xóa ảnh</button>`:''}<button class="btn sm" data-act="closeview">Đóng</button></div></div>`}else ui.view=null}
   lb.innerHTML=lbHtml;
@@ -1244,9 +1496,9 @@ document.addEventListener('click',e=>{
     m.streak++;
     if(m.goal&&m.streak===m.goal)post(m.id,'streak','hoàn thành mục tiêu chuỗi <b>'+m.goal+' ngày</b>');
     else if([7,14,21,30,50,100].includes(m.streak))post(m.id,'streak','đạt chuỗi <b>'+m.streak+' ngày</b> tập liên tục');
-    if(m.streak%7===0){m.freezes++;toast('Hoàn thành! Bạn được thêm 1 lượt đóng băng chuỗi')}else toast('Hoàn thành! Chuỗi '+m.streak+' ngày');
+    toast('Hoàn thành! Chuỗi '+m.streak+' ngày');
     allDoneCheck();break}
-  case 'rest':{if(isDaily(m)){if(m.freezes<1)break;m.freezes--}day(m.id).status='rest';toast(isDaily(m)?'Đã nghỉ hôm nay, dùng 1 lượt đóng băng':'Đã báo nghỉ hôm nay');allDoneCheck();break}
+  case 'rest':{const dd=day(m.id);if(isDaily(m)&&dd.prevStreak==null){dd.prevStreak=m.streak;m.streak=0}dd.status='rest';dd.mode='rest';toast(isDaily(m)?'Đã báo nghỉ, chuỗi về 0':'Đã báo nghỉ hôm nay');allDoneCheck();break}
   case 'voltrain':ui.volTrain=true;break;
   case 'volfree':{day(m.id).status='done';toast('Đã ghi nhận buổi tập thêm hôm nay');allDoneCheck();break}
   case 'poke':{S.pokes[TODAY]=S.pokes[TODAY]||{};S.pokes[TODAY][m.id+'>'+id]=1;toast('Đã nhắc '+M(id).name+' tập bài hôm nay');break}
@@ -1258,7 +1510,7 @@ document.addEventListener('click',e=>{
   case 'joinc':{const c=S.challenges.find(x=>x.id===id);const i=c.participants.indexOf(m.id);
     if(i<0){c.participants.push(m.id);c.progress[m.id]=c.progress[m.id]||{b:0,v:0,last:null};toast('Đã tham gia '+c.name)}else{c.participants.splice(i,1);toast('Đã rời challenge')}break}
   case 'logc':{const c=S.challenges.find(x=>x.id===id);const before=rankOf(c,m.id);const p=c.progress[m.id];p.v++;p.last=TODAY;afterLog(c,before);break}
-  case 'rsvp':{const s=S.sessions.find(x=>x.id===id);s.rsvp[m.id]=t.dataset.v;toast(t.dataset.v==='yes'?'Đã báo sẽ đến':'Đã báo không đến');break}
+  case 'rsvp':{const s=S.sessions.find(x=>x.id===id);s.rsvp[m.id]=t.dataset.v;{const dd=dayOf(m.id,s.date);if(t.dataset.v==='yes')dd.mode='park';else if(dd.mode==='park')dd.mode=null}toast(t.dataset.v==='yes'?'Đã báo sẽ đến':'Đã báo không đến');break}
   case 'checkin':{const s=S.sessions.find(x=>x.id===id);if(!s.checkins.includes(m.id)){s.checkins.push(m.id);s.rsvp[m.id]='yes';m.attended=Math.min(8,m.attended+1);
     const f=S.feed.find(p=>p.kind==='meet'&&p.sid===s.id);
     if(f){f.who=m.id;f.text='và '+(s.checkins.length-1)+' người khác đã check-in buổi <b>'+esc(s.title)+'</b> tại Công viên Lê Văn Tám';f.ts=Date.now()}
@@ -1351,6 +1603,22 @@ document.addEventListener('click',e=>{
   case 'selfopen':ui.selfOpen=true;break;
   case 'selfclose':ui.selfOpen=false;ui.selfDays=null;break;
   case 'sessopen':ui.openSess=ui.openSess===id?null:id;break;
+  case 'seldate':ui.selDate=t.dataset.v;ui.showContent=null;break;
+  case 'calw':ui.calWeek=Math.max(-4,Math.min(4,(ui.calWeek||0)+(+t.dataset.v)));break;
+  case 'showcontent':{const ds=ui.selDate||TODAY;ui.showContent=ui.showContent===ds?null:ds;break}
+  case 'setmode':{const ds=ui.selDate||TODAY,v=t.dataset.v,se=sessionOn(ds),dd=dayOf(m.id,ds);
+    if(dd.status==='done'){toast('Bạn đã tập xong ngày này');break}
+    if(v==='rest'&&ds===TODAY){if(isDaily(m)&&dd.prevStreak==null){dd.prevStreak=m.streak;m.streak=0}dd.status='rest'}
+    if(v!=='rest'&&dd.status==='rest'){dd.status=null;if(dd.prevStreak!=null){m.streak=dd.prevStreak;dd.prevStreak=null}}
+    dd.mode=v;if(se&&!se.cancelled)se.rsvp[m.id]=v==='park'?'yes':'no';
+    if(v==='park'||v==='self')ui.volTrain=true;
+    toast(v==='park'?'Đã xác nhận tập ở công viên':v==='self'?'Đã xác nhận tự tập':isDaily(m)&&ds===TODAY?'Đã báo nghỉ, chuỗi về 0':'Đã báo nghỉ');if(ds===TODAY)allDoneCheck();break}
+  case 'clearmode':{const ds=ui.selDate||TODAY,se=sessionOn(ds),dd=dayOf(m.id,ds);
+    if(dd.status==='rest'){dd.status=null;if(dd.prevStreak!=null){m.streak=dd.prevStreak;dd.prevStreak=null}}
+    dd.mode=null;if(se&&se.rsvp[m.id])delete se.rsvp[m.id];ui.volTrain=false;break}
+  case 'gochal':{location.hash='#challenge';setTimeout(()=>{ui.chal=id;render()},60);break}
+  case 'cday':{const c=S.challenges.find(x=>x.id===id),pp=c.progress[m.id];pp.days=pp.days||[];if(!pp.days.includes(TODAY))pp.days.push(TODAY);pp.v=pp.days.length;pp.last=TODAY;
+    const ci=commitInfo(c,m.id);toast('Đã điểm danh · '+ci.done+'/'+ci.need+' ngày cần đạt');if(ci.done===ci.need)post(m.id,'challenge','đã đủ '+ci.need+' ngày tối thiểu của <b>'+esc(c.name)+'</b>');break}
   case 'sub':ui.sub=t.dataset.v;ui.chal=null;ui.newChal=false;ui.err='';break;
   case 'cm':ui.openCm[id]=!ui.openCm[id];break;
   case 'metricform':ui.metricForm=!ui.metricForm;ui.err='';break;
@@ -1375,11 +1643,16 @@ document.addEventListener('change',e=>{
   if(t.type==='file'){const f=t.files&&t.files[0];if(!f)return;
     if(id==='up-cover')readImg(f,1400,u=>{S.media.cover=u;toast('Đã cập nhật ảnh nhóm');render()});
     else if(id==='up-avatar')readImg(f,240,u=>{S.media.avatars[S.me]=u;toast('Đã đổi ảnh đại diện');render()});
+    else if(id.startsWith('up-cb-')||id.startsWith('up-ca-')){const cid=id.slice(6),k=id.startsWith('up-cb-')?'before':'after',c=S.challenges.find(x=>x.id===cid);
+      readImg(f,900,u=>{S.media.cp=S.media.cp||{};const bag=S.media.cp[cid]=S.media.cp[cid]||{};(bag[S.me]=bag[S.me]||{})[k]=u;
+        if(k==='before'&&!c.participants.includes(S.me)){c.participants.push(S.me);c.progress[S.me]={v:0,days:[],before:'u',last:null};post(S.me,'challenge','tham gia <b>'+esc(c.name)+'</b>');toast('Đã nộp ảnh trước và tham gia '+c.name)}
+        else{(c.progress[S.me]=c.progress[S.me]||{days:[]})[k]='u';toast(k==='after'?'Đã nộp ảnh sau':'Đã cập nhật ảnh trước')}
+        render()})}
     else if(id==='up-post')readImg(f,1200,u=>{ui.pending=u;ui.sub='feed';render();window.scrollTo(0,0)});
     else if(id.startsWith('up-sess-')){const sid=id.slice(8);readImg(f,1200,u=>{addPhoto(u,'',sid);toast('Đã thêm ảnh vào buổi tập và đăng lên bảng tin');render()})}
     t.value='';return}
   if(t.dataset.act==='check'){const d=day(S.me);d.checked[+t.dataset.i]=t.checked?1:0;render();return}
-  if(id==='me-select'){S.me=t.value;ui.selfOpen=false;ui.selfDays=null;ui.skipEdit=null;ui.volTrain=false;ui.streakOpen=false;ui.chal=null;ui.err='';ui.confirmCancel=null;render();return}
+  if(id==='me-select'){S.me=t.value;ui.showContent=null;ui.selfOpen=false;ui.selfDays=null;ui.skipEdit=null;ui.volTrain=false;ui.streakOpen=false;ui.chal=null;ui.err='';ui.confirmCancel=null;render();return}
   if(id==='pf-privacy'){me().privacy=t.value;render();return}
   if(id.startsWith('lv-')){M(id.slice(3)).level=t.value;toast('Đã chuyển '+M(id.slice(3)).name+' sang nhóm '+LEVELS[t.value]);render();return}
   if(id==='rec-time'){if(t.value){S.recurring.time=t.value;ensureRecurring();ui.recOpen=true;toast('Giờ tập chung: '+t.value);render()}return}
@@ -1415,7 +1688,9 @@ document.addEventListener('submit',e=>{
     else if(!start||!end||end<start)ui.err='Ngày kết thúc phải sau ngày bắt đầu.';
     else if(!parts.length)ui.err='Mời ít nhất một người tham gia.';
     else{const progress={};parts.forEach(id=>progress[id]={b:0,v:0,last:null});
-      S.challenges.unshift({id:'c'+Date.now(),name,type,ex:type==='consistency'?null:val('cf-ex'),start,end,target:+val('cf-target')||0,team:type==='total'?(+val('cf-team')||0):0,by:m.id,desc:val('cf-desc'),reward:val('cf-reward'),participants:parts,progress,prevRank:{}});
+      const isC=type==='commit';
+      S.challenges.unshift({id:'c'+Date.now(),name,type,ex:type==='consistency'||isC?null:val('cf-ex'),start,end,target:+val('cf-target')||0,team:type==='total'?(+val('cf-team')||0):0,by:m.id,desc:val('cf-desc'),reward:val('cf-reward'),participants:isC?[]:parts,progress:isC?{}:progress,prevRank:{},
+        ...(isC?{minRate:Math.min(100,Math.max(10,+val('cf-min')||75))/100,penalty:val('cf-penalty'),lesson:val('cf-lesson'),invited:parts}:{})});
       post(m.id,'challenge','tạo challenge mới <b>'+esc(name)+'</b> ('+fmtS(start)+' → '+fmtS(end)+')');
       ui.newChal=false;toast('Đã tạo challenge và mời '+parts.length+' người')}}
   else if(kind==='logc'){const c=S.challenges.find(x=>x.id===f.dataset.id);const n=+val('lg-'+c.id);if(!(n>0))return;
