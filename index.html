@@ -186,8 +186,8 @@ textarea{resize:vertical;min-height:60px}
 .nav a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 9px;text-decoration:none;color:var(--muted);font-size:.68rem;font-weight:600;min-width:0}
 .nav a svg{width:22px;height:22px}
 .nav a[aria-current="page"]{color:var(--accent)}
-.nav a.lead{color:var(--flame)}
-.nav a.lead[aria-current="page"]{color:var(--flame);text-decoration:underline;text-underline-offset:3px}
+.nav a{position:relative}
+.nav-dot{position:absolute;top:6px;left:calc(50% + 7px);width:10px;height:10px;border-radius:50%;background:var(--flame);border:2px solid var(--surface)}
 
 .toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:.88rem;font-weight:600;z-index:20;max-width:calc(100% - 32px);text-align:center;transition:opacity .2s}
 .proto{font-size:.75rem;color:var(--muted);border-left:3px solid var(--line);padding-left:8px}
@@ -536,6 +536,40 @@ button.tile:hover,a.tile:hover{border-color:var(--accent)}
 .mem-open{display:flex;align-items:center;gap:10px;background:transparent;border:0;padding:0;font:inherit;color:var(--fg);cursor:pointer;text-align:left}
 .mem-open:hover b{color:var(--accent)}
 .mem-open .chev{font-size:1.1rem}
+.hero-line{display:flex;align-items:center;gap:12px}
+.hero-line .grow{display:flex;flex-direction:column;min-width:0}
+.hp-ic.sm{width:38px;height:38px;border-radius:12px}
+.hp-ic.sm svg{width:22px;height:22px}
+.hero-line.none .hp-ic{background:var(--surface-2);color:var(--muted)}
+.hero-line.cx .hp-ic{background:var(--warn-soft);color:var(--warn)}
+.hero-line.cx .hp-t{text-decoration:line-through;color:var(--muted)}
+.hero-line .hp-t{font-size:1.05rem}
+.av.more{background:var(--surface-2);color:var(--muted)}
+.hero-more{display:flex;flex-direction:column;gap:10px}
+.hero-more a{color:var(--accent);font-weight:600}
+.crew-card{gap:10px}
+.crew-head{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:0;padding:0;font:inherit;color:var(--fg);text-align:left;cursor:pointer}
+.crew-head .grow{display:flex;flex-direction:column}
+.mini-note summary{cursor:pointer;font-size:.84rem;font-weight:600;color:var(--accent)}
+.mini-note p{margin-top:6px}
+.skip-btn{border-color:transparent}
+button.link-card{width:100%;font:inherit;text-align:left;cursor:pointer}
+.lead-card.missing{background:var(--flame-soft);border-color:var(--flame)}
+.lead-card.missing .lab{color:var(--flame)}
+.lead-card b{font-size:1rem}
+.nav a span{white-space:nowrap}
+.brand b{overflow:hidden;text-overflow:ellipsis}
+@media (max-width:380px){.nav a{font-size:.6rem}.brand b{font-size:.88rem;white-space:nowrap}.who select{max-width:118px}}
+.log{display:flex;flex-direction:column}
+.log-it{display:flex;gap:8px;align-items:baseline;padding:5px 0;font-size:.9rem;border-bottom:1px dashed var(--line)}
+.log-it:last-child{border-bottom:0}
+.log-mk{width:14px;color:var(--good);font-weight:800}
+.log-it.sk{color:var(--muted)}
+.log-it.sk .log-mk{color:var(--warn)}
+.log-it small{color:var(--warn)}
+.log-it b{white-space:nowrap}
+.log-m{display:flex;flex-direction:column;padding:6px 0;border-bottom:1px dashed var(--line)}
+.log-m:last-child{border-bottom:0}
 /* simplified layout */
 .today-h{display:flex;align-items:flex-end;gap:12px}
 .streak-mini{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--flame-soft);color:var(--flame);border-radius:14px;padding:6px 12px;min-width:76px}
@@ -552,8 +586,6 @@ button.tile:hover,a.tile:hover{border-color:var(--accent)}
 .link-card{flex-direction:row;align-items:center;text-decoration:none;color:var(--fg);gap:4px}
 .link-card b{display:block;font-size:1rem}
 .link-card:hover{border-color:var(--accent)}
-.lead-card{border-color:var(--flame)}
-.lead-card .lab{color:var(--flame)}
 .chev{font-size:1.8rem;color:var(--muted);line-height:1}
 .ch{width:100%;text-align:left;cursor:pointer;gap:6px;color:var(--fg);font:inherit}
 .ch:hover{border-color:var(--accent)}
@@ -608,7 +640,7 @@ function exI(id){if(id&&id.startsWith('combo:')){const c=(S.combos||[]).find(x=>
 const dose=it=>exI(it.ex).u==='round'?it.sets+' vòng':it.sets+' × '+it.reps+(exI(it.ex).u==='s'?'s':'');
 const partTxt=p=>p.reps+(EX[p.ex].u==='s'?'s ':' ')+EX[p.ex].n;
 function comboDetail(it){const c=exI(it.ex).combo;if(!c)return'';
-  return c.parts.map(partTxt).join(' + ')+' · tổng '+c.parts.map(p=>(p.reps*it.sets)+(EX[p.ex].u==='s'?'s ':' ')+EX[p.ex].n).join(', ')}
+  return c.parts.map(partTxt).join(' + ')}
 const TESTS={pushup:'Max push-up',pullup:'Max pull-up',dips:'Max dips',plank:'Plank (giây)',hang:'Dead hang (giây)'};
 const BODY={weight:['Cân nặng','kg',1],waist:['Vòng eo','cm',1],chest:['Vòng ngực','cm',1],arm:['Bắp tay','cm',1],rhr:['Nhịp tim nghỉ','bpm',0]};
 const KIND={done:'Hoàn thành',photo:'Ảnh',pr:'Kỷ lục',skill:'Kỹ năng',streak:'Chuỗi',challenge:'Challenge',meet:'Tập chung',group:'Cả nhóm'};
@@ -707,7 +739,7 @@ function seed(){
     {id:'r-'+TODAY,title:'Buổi tập chung',date:TODAY,time:'18:00',plan:'Khởi động cổ tay 10 phút, handstand tựa tường 5 × 30s, L-sit 4 × 15s, hollow body 3 × 30s.',repeat:'Cố định',fixed:true,rsvp:{phi:'yes',nhu:'yes',ngoc:'yes',quay:'no'},checkins:[]},
     {id:'s2',title:'Test chỉ số 2 tuần/lần',date:off(nextSun),time:'06:00',plan:'Test max push-up, pull-up, dips, plank, dead hang. Mọi người nhập kết quả vào tab Tôi ngay tại công viên.',repeat:'Buổi thêm',rsvp:{phi:'yes',nhu:'yes',dai:'yes',ngoc:'yes'},checkins:[]},
     {id:'r-'+off(nextTue),title:'Buổi tập chung',date:off(nextTue),time:'18:00',plan:'',repeat:'Cố định',fixed:true,rsvp:{},checkins:[],cancelled:{reason:'Công viên đóng cửa do có sự kiện',by:'phi'}},
-    {id:'r-'+off(lastTue),title:'Push day',date:off(lastTue),time:'18:00',plan:'',repeat:'Cố định',fixed:true,rsvp:{},checkins:['phi','leo','dong','phat','nhu','nhat','dai']}
+    {id:'r-'+off(lastTue),title:'Push day',date:off(lastTue),time:'18:00',plan:'Push day: push-up, dips, pike push-up, handstand theo level.',repeat:'Cố định',fixed:true,rsvp:{},checkins:['phi','leo','dong','phat','nhu','nhat','dai']}
   ];
 
   const assignments=[
@@ -722,18 +754,25 @@ function seed(){
     {id:'f2',who:'becky',kind:'challenge',text:'vượt Phát, lên hạng 5 ở <b>'+esc(challenges.find(c=>c.id==='c1').name)+'</b>',ts:now-5*H,re:{'👏':['nhu','dong'],'😮':['phat']},cm:[{who:'phat',t:'Mai lấy lại hạng 😤'}]},
     {id:'f3',who:'phi',kind:'skill',text:'mở khóa <b>Straddle front lever</b>, giữ được 3 × 8s',ts:now-26*H,re:{'🔥':['leo','dong','becky','phat','nhu','quay','nhat','dai','ngoc'],'😮':['quay']},cm:[]},
     {id:'f4',who:'nhu',kind:'streak',text:'đạt chuỗi <b>28 ngày</b> tập liên tục',ts:now-30*H,re:{'🔥':['phi','becky'],'👏':['leo','quay']},cm:[]},
-    {id:'f5',who:'phi',kind:'meet',text:'và 6 người khác đã check-in buổi <b>Push day</b> tại Công viên Lê Văn Tám',ts:now-3*24*H,re:{'💪':['leo','dong','phat','nhu']},cm:[{who:'quay',t:'Tuần này em đi được rồi'}]}
+    {id:'f5',who:'phi',kind:'meet',text:'và 6 người khác đã check-in buổi <b>Push day</b>',ts:now-3*24*H,re:{'💪':['leo','dong','phat','nhu']},cm:[{who:'quay',t:'Tuần này em đi được rồi'}]}
   ];
 
   const daily={};daily[TODAY]={phi:{checked:[1,1,1,1],status:'done'},dong:{mode:'self',checked:[1,1,0,1],skips:{2:'Đau gối, hôm nay để gối nghỉ'},status:'done'},nhu:{checked:[1,1,1,1],status:'done'},nhat:{mode:'self',checked:[1,1,1,1],status:'done'},dai:{mode:'self',checked:[1,1,1,1],status:'done'},phat:{checked:[],status:'rest'},leo:{checked:[1],status:null}};
+  {const pd=off(lastTue);
+    assignments.push(
+      {id:'ap1',date:pd,target:{type:'level',id:'base'},items:[{ex:'incline',sets:3,reps:10},{ex:'squat',sets:3,reps:15},{ex:'plank',sets:3,reps:30}],note:''},
+      {id:'ap2',date:pd,target:{type:'level',id:'mid'},items:[{ex:'pushup',sets:4,reps:12},{ex:'dips',sets:4,reps:8},{ex:'pike',sets:3,reps:8}],note:''},
+      {id:'ap3',date:pd,target:{type:'level',id:'adv'},items:[{ex:'pushup',sets:4,reps:15},{ex:'dips',sets:4,reps:10},{ex:'hs',sets:5,reps:30}],note:''});
+    const ok={mode:'park',checked:[1,1,1],status:'done'};
+    daily[pd]={phi:{...ok},leo:{...ok},nhat:{...ok},dai:{...ok},phat:{...ok,checked:[1,1,0],skips:{2:'Hết giờ, trời tối'}},nhu:{...ok},dong:{...ok,checked:[1,0,1],skips:{1:'Vai trái còn đau'}}};}
   const pokes={};pokes[TODAY]={'phi>leo':1};
-  return{ver:9,seedDate:TODAY,me:'leo',members,challenges,sessions,assignments,feed,daily,pokes,groupStreak:4,groupDone:null};
+  return{ver:10,seedDate:TODAY,me:'leo',members,challenges,sessions,assignments,feed,daily,pokes,groupStreak:4,groupDone:null};
 }
 
 /* ---------- state ---------- */
 const KEY='calis-lvt-proto-v2';
 let S,old=null;
-try{const raw=localStorage.getItem(KEY);if(raw){const s=JSON.parse(raw);if(s&&s.ver===9&&s.seedDate===TODAY)S=s;else old=s}}catch(e){}
+try{const raw=localStorage.getItem(KEY);if(raw){const s=JSON.parse(raw);if(s&&s.ver===10&&s.seedDate===TODAY)S=s;else old=s}}catch(e){}
 if(!S){S=seed();if(old){if(old.media)S.media=old.media;if(old.combos)S.combos=old.combos;if(old.lessons)S.lessons=old.lessons;if(old.recurring)S.recurring=old.recurring;if(old.invite)S.invite=old.invite;if(old.plans)S.plans=old.plans}}
 S.media=S.media||{cover:null,avatars:{},album:[]};
 S.combos=S.combos||[{id:'5md',code:'5md',parts:[{ex:'pullup',reps:5},{ex:'pushup',reps:10}]}];
@@ -918,13 +957,10 @@ function habitCard(){
   if(!a)work=`<div class="card"><h3>Bài hôm nay</h3><p class="muted">Anh Phi Le chưa giao bài cho bạn hôm nay.</p></div>`;
   else{const skips=d.skips||{},nSk=Object.keys(skips).length,all=a.items.every((_,i)=>d.checked[i]||skips[i]!=null);
     work=`<div class="card">
-      <div class="sec-h"><h3>Bài hôm nay</h3><span class="small muted">${a.target.type==='member'?'Bài riêng cho bạn':'Nhóm '+LEVELS[a.target.id]}</span></div>
+      <h3>Bài hôm nay</h3>
       <div>${a.items.map((it,i)=>exItem(a,d,i,it)).join('')}</div>
-      ${a.note?`<div class="note"><b>Phi Le:</b> ${esc(a.note)}</div>`:''}
-      ${d.status==='done'?`<div class="note" style="background:var(--good-soft)">Xong bài hôm nay${nSk?' (bỏ qua '+nSk+' bài)':''}.${isDaily(m)?` Chuỗi của bạn: <b>${m.streak} ngày</b>.`:''}</div>`
-       :d.status==='rest'?`<div class="note">${isDaily(m)?'Bạn nghỉ hôm nay. Chuỗi bắt đầu lại từ ngày mai.':'Bạn đã báo nghỉ hôm nay.'}</div>`
-       :`<button class="btn pri block" data-act="complete" ${all?'':'disabled'}>${all?(nSk?'Hoàn thành (bỏ qua '+nSk+' bài)':'Hoàn thành buổi tập'):'Tick hoặc bỏ qua hết các bài để hoàn thành'}</button>
-         ${isDaily(m)?`<button class="btn ghost sm" data-act="rest" style="align-self:center">Nghỉ hôm nay (chuỗi ${m.streak} ngày sẽ về 0)</button>`:'<button class="btn ghost sm" data-act="rest" style="align-self:center">Hôm nay nghỉ</button>'}`}
+      ${a.note?`<details class="mini-note"><summary>Ghi chú của anh Phi Le</summary><p class="small">${esc(a.note)}</p></details>`:''}
+      ${d.status?'':`<button class="btn pri block" data-act="complete" ${all?'':'disabled'}>${all?(nSk?'Hoàn thành (bỏ qua '+nSk+' bài)':'Hoàn thành buổi tập'):'Tick hoặc bỏ qua hết các bài để hoàn thành'}</button>`}
     </div>`}
   if(ts==='plan'&&!ui.volTrain){let nx=1;while(nx<14&&isPlanRest(m,off(nx)))nx++;
     work=`<div class="card"><div class="sec-h"><h3>Hôm nay nghỉ</h3><span class="pill">${planLabel(planOf(m))}</span></div>
@@ -972,13 +1008,10 @@ function todayWork(){
   if(!a)work=`<div class="card"><h3>Bài hôm nay</h3><p class="muted">Anh Phi Le chưa giao bài cho bạn hôm nay.</p></div>`;
   else{const skips=d.skips||{},nSk=Object.keys(skips).length,all=a.items.every((_,i)=>d.checked[i]||skips[i]!=null);
     work=`<div class="card">
-      <div class="sec-h"><h3>Bài hôm nay</h3><span class="small muted">${a.target.type==='member'?'Bài riêng cho bạn':'Nhóm '+LEVELS[a.target.id]}</span></div>
+      <h3>Bài hôm nay</h3>
       <div>${a.items.map((it,i)=>exItem(a,d,i,it)).join('')}</div>
-      ${a.note?`<div class="note"><b>Phi Le:</b> ${esc(a.note)}</div>`:''}
-      ${d.status==='done'?`<div class="note" style="background:var(--good-soft)">Xong bài hôm nay${nSk?' (bỏ qua '+nSk+' bài)':''}.${isDaily(m)?` Chuỗi của bạn: <b>${m.streak} ngày</b>.`:''}</div>`
-       :d.status==='rest'?`<div class="note">${isDaily(m)?'Bạn nghỉ hôm nay. Chuỗi bắt đầu lại từ ngày mai.':'Bạn đã báo nghỉ hôm nay.'}</div>`
-       :`<button class="btn pri block" data-act="complete" ${all?'':'disabled'}>${all?(nSk?'Hoàn thành (bỏ qua '+nSk+' bài)':'Hoàn thành buổi tập'):'Tick hoặc bỏ qua hết các bài để hoàn thành'}</button>
-         ${isDaily(m)?`<button class="btn ghost sm" data-act="rest" style="align-self:center">Nghỉ hôm nay (chuỗi ${m.streak} ngày sẽ về 0)</button>`:'<button class="btn ghost sm" data-act="rest" style="align-self:center">Hôm nay nghỉ</button>'}`}
+      ${a.note?`<details class="mini-note"><summary>Ghi chú của anh Phi Le</summary><p class="small">${esc(a.note)}</p></details>`:''}
+      ${d.status?'':`<button class="btn pri block" data-act="complete" ${all?'':'disabled'}>${all?(nSk?'Hoàn thành (bỏ qua '+nSk+' bài)':'Hoàn thành buổi tập'):'Hoàn thành · '+a.items.filter((_,i)=>d.checked[i]||skips[i]!=null).length+'/'+a.items.length}</button>`}
     </div>`}
   if(ts==='plan'&&!ui.volTrain&&!['park','self'].includes(modeOf(m.id,TODAY))){let nx=1;while(nx<14&&isPlanRest(m,off(nx)))nx++;
     work=`<div class="card"><div class="sec-h"><h3>Hôm nay nghỉ</h3><span class="pill">${planLabel(planOf(m))}</span></div>
@@ -1023,42 +1056,62 @@ function calWeek(m,sel){
       return`<button class="cal-d ${ds===sel?'sel':''} ${ds===TODAY?'today':''} ${ds<TODAY?'past':''}" data-act="seldate" data-v="${ds}" aria-pressed="${ds===sel}" aria-label="${fmtD(ds)}${se?(se.cancelled?', buổi công viên đã hủy':', có buổi ở công viên'):''}${ds>=TODAY&&(dn||md==='park'||md==='self')?', bạn sẽ tập':''}">
         <small>${ds===TODAY?'Nay':WD[d0.getDay()]}</small><b>${d0.getDate()}</b>
         <span class="mks">${se?`<i class="mk park ${se.cancelled?'cx':''}"></i>`:''}${ds>=TODAY&&(dn||md==='park'||md==='self')?'<i class="mk mine"></i>':''}</span></button>`}).join('')}</div>
-    <div class="cal-legend2"><span><i class="mk park"></i>Buổi ở công viên</span><span><i class="mk mine"></i>Bạn sẽ tập</span></div>
   </div>`;
 }
 
+function logOf(id,ds){const d=(S.daily[ds]||{})[id];if(!d||d.status!=='done')return null;
+  const items=d.log?d.log.items:((assignmentFor(id,ds)||{}).items);if(!items)return null;
+  return{items,checked:d.checked||[],skips:d.skips||{}}}
+function logHTML(l){return`<div class="log">${l.items.map((it,i)=>{const sk=l.skips[i];
+  return`<div class="log-it ${sk!=null?'sk':''}"><span class="log-mk">${sk!=null?'–':'✓'}</span><span class="grow">${esc(exI(it.ex).n)}${sk!=null?` <small>· bỏ qua: ${esc(sk)}</small>`:''}</span><b class="num">${dose(it)}</b></div>`}).join('')}</div>`}
+function pastCard(s){
+  const open=ui.openPast===s.id,d0=parse(s.date),mine=logOf(S.me,s.date);
+  const rows=s.checkins.map(id=>{const l=logOf(id,s.date),x=M(id);
+    if(!l)return`<div class="log-m"><b>${esc(x.name)}</b><span class="small muted">Không ghi nhận bài</span></div>`;
+    const n=l.items.length,sk=Object.entries(l.skips);
+    return`<div class="log-m"><b>${esc(x.name)}</b><span class="small ${sk.length?'warn-t':'muted'}">${n-sk.length}/${n} bài${sk.length?' · bỏ qua '+sk.map(([i,r])=>esc(exI(l.items[i].ex).n)+' ('+esc(r)+')').join(', '):''}</span></div>`}).join('');
+  return`<div class="card">
+    <button class="sr-main" data-act="openpast" data-id="${s.id}" aria-expanded="${open}"><span class="sr-d"><b class="num">${d0.getDate()}</b><small>${WD[d0.getDay()]}</small></span>
+      <span class="grow"><b>${esc(s.title)}</b><span class="small muted">${s.cancelled?'Đã hủy':s.checkins.length+' người tham gia'}${mine?' · bạn đã tập':''}</span></span><span class="chev">${open?'−':'›'}</span></button>
+    ${open?`${s.plan?`<p class="small">${esc(s.plan)}</p>`:''}
+      ${mine?`<div><span class="lab">Bài của bạn</span>${logHTML(mine)}</div>`:''}
+      <div><span class="lab">Kết quả từng người</span>${rows||'<p class="small muted">Không có ai check-in.</p>'}</div>
+      ${sessPhotos(s)}`:''}
+  </div>`;
+}
 function vToday(){
   const m=me(),ds=ui.selDate||TODAY,isT=ds===TODAY,past=ds<TODAY;
   const se=sessionOn(ds),park=se&&!se.cancelled,myMode=modeOf(m.id,ds);
   const dd=(S.daily[ds]||{})[m.id]||{},done=dd.status==='done';
-  const going=park?S.members.filter(x=>se.rsvp[x.id]==='yes'):[];
+  const going=park?S.members.filter(x=>past?se.checkins.includes(x.id):se.rsvp[x.id]==='yes'):[];
   const pokers=S.members.filter(x=>(S.pokes[TODAY]||{})[x.id+'>'+m.id]);
   const [wd,wp]=weekCount(m);
   // ---- primary: the session on the selected day
-  const head=park?`<div class="hero-top"><span class="hp-ic">${TREE}</span><div class="grow"><span class="lab">Tập ở công viên</span><b class="hp-t">${se.time} · ${esc(se.title)}</b>
-      <p class="small muted">${esc(se.place||'Công viên Lê Văn Tám')} · <a href="${MAPS}" target="_blank" rel="noopener">Chỉ đường</a></p></div></div>
-    <div class="goers"><div class="stack">${going.slice(0,8).map(x=>av(x,'sm')).join('')}</div><span class="small"><b>${going.length} người sẽ tập</b>${going.length?': '+going.map(x=>x.id===m.id?'Bạn':esc(x.name)).join(', '):''}</span></div>`
-   :se?`<div class="hero-top cx"><span class="hp-ic">${TREE}</span><div class="grow"><span class="lab">Buổi tập ở công viên đã hủy</span><b class="hp-t">${se.time} · ${esc(se.title)}</b><p class="small">Lý do: ${esc(se.cancelled.reason)}</p></div></div>`
-   :`<div class="hero-top none"><span class="hp-ic">${HOUSE}</span><div class="grow"><span class="lab">${isT?'Hôm nay':'Ngày này'} không có buổi ở công viên</span><b class="hp-t">${isPlanRest(m,ds)?'Ngày nghỉ theo lịch của bạn':'Ngày tập của bạn'}</b></div></div>`;
+  const DEF='Buổi tập chung';
+  const stackOf=list=>`<span class="stack">${list.slice(0,4).map(x=>av(x,'sm')).join('')}${list.length>4?`<span class="av sm more">+${list.length-4}</span>`:''}</span>`;
+  const head=park?`<div class="hero-line"><span class="hp-ic sm">${TREE}</span><div class="grow"><b class="hp-t">${se.time} · Tập chung</b>${se.title!==DEF?`<span class="small muted">${esc(se.title)}</span>`:''}</div>${going.length?stackOf(going):''}</div>`
+   :se?`<div class="hero-line cx"><span class="hp-ic sm">${TREE}</span><div class="grow"><b class="hp-t">${se.time} · Buổi công viên đã hủy</b><span class="small">${esc(se.cancelled.reason)}</span></div></div>`
+   :`<div class="hero-line none"><span class="hp-ic sm">${HOUSE}</span><div class="grow"><b class="hp-t">Không có buổi ở công viên</b></div></div>`;
   let confirm;
   if(past)confirm=`<p class="small muted">${done?'Bạn đã tập xong ngày này.':myMode?'Bạn đã chọn: '+MODE_LABEL[myMode]+'.':'Bạn không xác nhận ngày này.'}</p>`;
   else if(done)confirm=`<div class="my-state done">Đã hoàn thành buổi tập${myMode==='park'?' ở công viên':''}</div>`;
   else if(myMode)confirm=`<div class="my-state ${myMode}"><span>Bạn: <b>${MODE_LABEL[myMode]}</b>${myMode==='park'&&isT&&se&&se.checkins.includes(m.id)?' · đã check-in':''}</span><button class="btn ghost sm" data-act="clearmode">Đổi</button></div>
       ${myMode==='park'&&isT&&park&&!se.checkins.includes(m.id)?`<button class="btn flame block" data-act="checkin" data-id="${se.id}">Check-in khi đến công viên</button>`:''}`;
   else confirm=`<p class="ask"><b>${isT?'Hôm nay':fmtD(ds)} bạn tập thế nào?</b></p>
-    <div class="confirm-btns">${park?'<button class="btn pri" data-act="setmode" data-v="park">Tập ở công viên</button>':''}<button class="btn ${park?'':'pri'}" data-act="setmode" data-v="self">Tự tập</button><button class="btn" data-act="setmode" data-v="rest">Nghỉ</button></div>${isDaily(m)&&isT?`<p class="small muted">Bạn chọn tập mỗi ngày: nghỉ hôm nay thì chuỗi ${m.streak} ngày về 0.</p>`:''}`;
+    <div class="confirm-btns">${park?'<button class="btn pri" data-act="setmode" data-v="park">Tập ở công viên</button>':''}<button class="btn ${park?'':'pri'}" data-act="setmode" data-v="self">Tự tập</button><button class="btn" data-act="setmode" data-v="rest">Nghỉ</button></div>`;
   // ---- secondary 1: session content
   const active=myMode==='park'||myMode==='self'||done;
-  const showC=active||ui.showContent===ds;
+  const open=ui.showContent===ds;
   const a=assignmentFor(m.id,ds);
-  let content='';
-  if(showC){
-    if(isT&&active)content=(park&&se.plan?`<div class="note park-note"><b>Buổi ở công viên:</b> ${esc(se.plan)}</div>`:'')+todayWork();
-    else content=`<div class="card"><div class="sec-h"><h3>Nội dung buổi tập</h3>${a?`<span class="small muted">${a.target.type==='member'?'Bài riêng cho bạn':'Nhóm '+LEVELS[a.target.id]}</span>`:''}</div>
-      ${park&&se.plan?`<div class="note"><b>Buổi ở công viên:</b> ${esc(se.plan)}</div>`:''}
-      ${a?lessonSections(a.items)+(a.note?`<div class="note"><b>Phi Le:</b> ${esc(a.note)}</div>`:''):'<p class="muted small">Anh Phi Le chưa giao bài cho ngày này.</p>'}
-      ${!active&&!past?'<p class="small muted">Xác nhận tập ở trên để bắt đầu tick bài.</p>':''}
-      ${!active?'<button class="btn ghost sm" data-act="showcontent" style="align-self:flex-start">Ẩn nội dung</button>':''}</div>`}
+  const content=isT&&active?todayWork():'';
+  const hasDetails=park||!(isT&&active);
+  const details=open?`<div class="hero-more">
+      ${park?`<div><span class="lab">${past?'Đã tham gia':'Ai sẽ tập'} · ${going.length}</span><p class="small">${going.length?going.map(x=>x.id===m.id?'Bạn':esc(x.name)).join(', '):'Chưa có ai'}</p></div>
+      ${se.place&&se.place!=='Công viên Lê Văn Tám'?`<div><span class="lab">Địa điểm</span><p class="small">${esc(se.place)}</p></div>`:''}
+      ${se.plan?`<div><span class="lab">Kế hoạch buổi chung</span><p class="small">${esc(se.plan)}</p></div>`:''}`:''}
+      ${past?(()=>{const l=logOf(m.id,ds);return`<div><span class="lab">Bạn đã tập</span>${l?logHTML(l):'<p class="small muted">Không có ghi nhận buổi tập.</p>'}</div>`})()
+        :!(isT&&active)?`<div><span class="lab">Bài tập${a?' · '+a.items.length+' bài':''}</span>${a?lessonSections(a.items):'<p class="small muted">Chưa có bài cho ngày này.</p>'}</div>`:''}
+    </div>`:'';
   // ---- who trains on this day
   const G={park:[],self:[],rest:[],none:[]};
   S.members.forEach(x=>{const md=modeOf(x.id,ds);G[md||(isPlanRest(x,ds)?'rest':'none')].push(x)});
@@ -1078,14 +1131,17 @@ function vToday(){
   <div class="card hero ${park?'is-park':''}">
     ${head}
     ${confirm}
-    ${!showC?`<button class="disclose" data-act="showcontent"><span>Xem nội dung buổi tập</span><span class="chev">›</span></button>`:''}
+    ${hasDetails?`<button class="disclose" data-act="showcontent" aria-expanded="${open}"><span>${open?'Thu gọn':'Chi tiết'}</span><span class="chev">${open?'−':'›'}</span></button>
+    ${details}`:''}
   </div>
   ${content}
-  <div class="card"><h3>${isT?'Cả nhóm hôm nay':'Cả nhóm · '+fmtD(ds)}</h3>
-    ${grp('park','Ở công viên',ppl(G.park))}${grp('self','Tự tập',ppl(G.self))}${grp('none',isT?'Chưa xác nhận · bấm để nhắc':'Chưa xác nhận',pokeList)}${grp('rest','Nghỉ',ppl(G.rest))}
+  <div class="card crew-card">
+    <button class="crew-head" data-act="crewopen" aria-expanded="${!!ui.crewOpen}"><div class="grow"><b>${isT?'Cả nhóm hôm nay':'Cả nhóm · '+fmtD(ds)}</b>
+      <span class="small muted">${[G.park.length?G.park.length+' công viên':'',G.self.length?G.self.length+' tự tập':'',G.none.length?G.none.length+' chưa xác nhận':''].filter(Boolean).join(' · ')||'Chưa ai xác nhận'}</span></div><span class="chev">${ui.crewOpen?'−':'›'}</span></button>
+    ${ui.crewOpen?`${grp('park','Ở công viên',ppl(G.park))}${grp('self','Tự tập',ppl(G.self))}${grp('none',isT?'Chưa xác nhận · bấm để nhắc':'Chưa xác nhận',pokeList)}${grp('rest','Nghỉ',ppl(G.rest))}`:''}
   </div>
-  ${isLeader()?`<a class="card link-card lead-card" href="#assign"><div class="grow"><span class="lab">Trưởng nhóm</span><b>Giao bài</b><p class="small muted">${S.assignments.filter(x=>x.date===TODAY).length} bài đã giao hôm nay</p></div><span class="chev">›</span></a>`:''}
-  <a class="card link-card" href="#schedule"><div class="grow"><span class="lab">Tập chung</span><b>Tất cả buổi ở công viên</b><p class="small muted">Lịch cố định ${S.recurring.days.length?ORDER.filter(x=>S.recurring.days.includes(x)).map(x=>WD[x]).join(' · '):'chưa đặt'} · ${S.recurring.time} · ảnh các buổi tập</p></div><span class="chev">›</span></a>`;
+  ${isLeader()&&!past?(()=>{const n=S.assignments.filter(x=>x.date===ds).length,day=isT?'hôm nay':fmtD(ds);
+    return`<button class="card link-card lead-card ${n?'':'missing'}" data-act="leadgive" data-v="${ds}"><div class="grow"><span class="lab">Trưởng nhóm · Giao bài</span><b>${n?'Đã giao '+n+' bài · '+day:'Chưa giao bài · '+day}</b></div><span class="chev">›</span></button>`})():''}`;
 }
 
 function coverCard(){
@@ -1270,7 +1326,7 @@ function formSession(){
 function sessRow(x){const m=me(),mine=x.rsvp[m.id]||'',yes=Object.values(x.rsvp).filter(v=>v==='yes').length,d0=parse(x.date);
   return`<div class="card sess-row ${x.cancelled?'is-cx':''}">
     <button class="sr-main" data-act="sessopen" data-id="${x.id}" aria-label="Xem chi tiết ${esc(x.title)}"><span class="sr-d"><b class="num">${d0.getDate()}</b><small>${WD[d0.getDay()]}</small></span>
-      <span class="grow"><b>${esc(x.title)}</b><span class="small muted">${x.time} · ${x.cancelled?'Đã hủy: '+esc(x.cancelled.reason):yes+' người sẽ đến'}${x.repeat==='Buổi thêm'?' · buổi thêm':''}</span></span></button>
+      <span class="grow"><b>${esc(x.title)}</b><span class="small muted">${x.time} · ${x.cancelled?'Đã hủy: '+esc(x.cancelled.reason):yes?yes+' người sẽ đến':'Chưa ai đăng ký'}${x.repeat==='Buổi thêm'?' · buổi thêm':''}</span></span></button>
     ${x.cancelled?'<span class="pill warn">Đã hủy</span>':`<button class="btn sm ${mine==='yes'?'pri':''}" data-act="rsvp" data-id="${x.id}" data-v="${mine==='yes'?'no':'yes'}" aria-pressed="${mine==='yes'}">${mine==='yes'?'Đã tham gia':'Tham gia'}</button>`}
   </div>`}
 const CANCEL_REASONS=['Trời mưa','Công viên đóng cửa do có sự kiện','Trưởng nhóm bận đột xuất','Ngày lễ'];
@@ -1284,7 +1340,7 @@ function sessCard(s,big){
   return`<div class="card">
     <div class="when"><span class="num">${s.time}</span><span class="muted">${isToday?'Hôm nay':fmtD(s.date)}</span>${s.repeat?`<span class="pill">${esc(s.repeat)}</span>`:''}</div>
     <h3 style="text-transform:none;font-size:1.3rem">${esc(s.title)}</h3>
-    <div class="place"><span>${esc(s.place||'Công viên Lê Văn Tám')}</span> · <a href="${MAPS}" target="_blank" rel="noopener" style="color:var(--accent)">Chỉ đường</a></div>
+    ${s.place&&s.place!=='Công viên Lê Văn Tám'?`<div class="place"><span>${esc(s.place)}</span></div>`:''}
     ${big&&s.plan?`<p class="small">${esc(s.plan)}</p>`:''}
     <div class="row"><div class="stack">${yes.map(x=>av(x,'sm')).join('')}</div><span class="small muted">${yes.length} sẽ đến${no.length?' · '+no.length+' không đến':''}${s.checkins.length?' · '+s.checkins.length+' đã check-in':''}</span></div>
     <div class="seg" role="group" aria-label="Bạn có đi không">${[['yes','Tham gia'],['no','Không']].map(([v,l])=>`<button data-act="rsvp" data-id="${s.id}" data-v="${v}" aria-pressed="${mine===v}">${l}</button>`).join('')}</div>
@@ -1301,18 +1357,18 @@ function vSchedule(){
   const up=S.sessions.filter(s=>s.date>=TODAY).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
   const past=S.sessions.filter(s=>s.date<TODAY).sort((a,b)=>b.date.localeCompare(a.date));
   const m=me();
-  return`<a class="btn ghost" href="#today" style="align-self:flex-start">← Lịch</a><div class="sec-h"><h2>Tập chung</h2>${isLeader()?`<button class="btn sm pri" data-act="news">${ui.newSess?'Đóng':'+ Thêm buổi'}</button>`:''}</div>
+  return`<div class="sec-h"><h2>Tập chung</h2>${isLeader()?`<button class="btn sm pri" data-act="news">${ui.newSess?'Đóng':'+ Thêm buổi'}</button>`:''}</div>
   <p class="small muted">Bạn đã đi ${m.attended}/8 buổi gần nhất${m.attended>=5?' · huy hiệu Chiến binh công viên':''}</p>
   ${(()=>{const lab=(S.recurring.days.length?ORDER.filter(d=>S.recurring.days.includes(d)).map(d=>WD[d]).join(' · '):'Chưa chọn ngày')+' · '+S.recurring.time;
     return isLeader()?`<details class="card fold" ${ui.recOpen?'open':''}><summary>Lịch cố định hằng tuần: ${lab}</summary><div class="sec">
       <div class="daypick">${ORDER.map(d=>`<button type="button" class="dp" data-act="recday" data-d="${d}" aria-pressed="${S.recurring.days.includes(d)}" aria-label="${WDL[d]}">${WD[d]}</button>`).join('')}</div>
       <label class="field"><span>Giờ tập</span><input type="time" id="rec-time" value="${S.recurring.time}"></label>
-      <p class="small muted">App tự tạo buổi tập cho 2 tuần tới tại Công viên Lê Văn Tám. Cần thêm buổi khác thì bấm "+ Thêm buổi".</p></div></details>`
-    :`<p class="small muted">Lịch cố định: <b>${lab}</b> tại Công viên Lê Văn Tám</p>`})()}
+      <p class="small muted">App tự tạo buổi tập cho 2 tuần tới. Cần thêm buổi khác thì bấm "+ Thêm buổi".</p></div></details>`
+    :`<p class="small muted">Lịch cố định: <b>${lab}</b></p>`})()}
   ${ui.newSess?formSession():''}
   ${up.length?sessCard(up[0],true):'<p class="muted">Chưa có buổi nào sắp tới.</p>'}
   ${up.length>1?`<h3 class="muted">Các buổi sau</h3>${up.slice(1).map(x=>ui.openSess===x.id?sessCard(x,true).replace(/<\/div>$/,`<button class="btn ghost sm" data-act="sessopen" data-id="${x.id}" style="align-self:center">Thu gọn</button></div>`):sessRow(x)).join('')}`:''}
-  ${past.length?`<details class="fold"><summary>Buổi đã diễn ra (${past.length})</summary><div class="sec">${past.map(s=>`<div class="card"><div class="row"><div class="grow"><b>${esc(s.title)}</b><p class="small muted">${fmtD(s.date)} · ${s.checkins.length} người tham gia</p></div><div class="stack">${s.checkins.map(id=>av(M(id),'sm')).join('')}</div></div>${sessPhotos(s)}</div>`).join('')}</div></details>`:''}`;
+  ${past.length?`<details class="fold" ${ui.pastOpen?'open':''}><summary data-act="pasttoggle">Buổi đã diễn ra (${past.length})</summary><div class="sec">${past.map(pastCard).join('')}</div></details>`:''}`;
 }
 
 function spark(vals,h){
@@ -1516,6 +1572,12 @@ function vMember(m){
   ${myChallenges(m).replace('Challenge của bạn','Challenge của '+esc(m.name))}
   <div class="card"><h3>Chỉ số cơ thể</h3>${body}</div>`;
 }
+// Days in the next week where a level group trains but has no workout yet (drives the tab badge).
+function unassignedDays(){let n=0;
+  for(let i=0;i<7;i++){const ds=off(i);
+    if(Object.keys(LEVELS).some(k=>{const ids=S.members.filter(m=>m.level===k).map(m=>m.id);
+      return ids.length&&!ids.every(id=>restingOn(id,ds))&&!S.assignments.some(a=>a.date===ds&&a.target.type==='level'&&a.target.id===k)}))n++}
+  return n}
 function vAssign(){
   if(ui.viewMember&&M(ui.viewMember))return vMember(M(ui.viewMember));
   const dr=ui.draft;
@@ -1547,7 +1609,7 @@ function vAssign(){
   const onDate=S.assignments.filter(a=>a.date===dr.date);
   const tpl=S.assignments.filter((a,i,arr)=>arr.findIndex(b=>JSON.stringify(b.items)===JSON.stringify(a.items))===i);
   const asub=ui.asub||'give';
-  const head=`<a class="btn ghost" href="#today" style="align-self:flex-start">← Hôm nay</a><h2>Giao bài</h2>
+  const head=`<a class="btn ghost" href="#today" style="align-self:flex-start">← Lịch</a><h2>Giao bài</h2>
   <div class="seg" role="group" aria-label="Mục">${[['give','Giao bài'],['lib','Thư viện'],['team','Thành viên']].map(([k,l])=>`<button data-act="asub" data-v="${k}" aria-pressed="${asub===k}">${l}</button>`).join('')}</div>`;
   if(asub==='lib')return head+`
   <a class="card link-card" href="#lessons"><div class="grow"><span class="lab">Thư viện</span><b>Giáo án</b><p class="small muted">${S.lessons.length} giáo án · soạn một lần, giao nhiều lần</p></div><span class="chev">›</span></a>
@@ -1587,14 +1649,17 @@ function vAssign(){
 }
 
 /* ---------- render ---------- */
-const TABS=[['today','Lịch'],['group','Nhóm'],['me','Tôi']];
+const TABS=[['today','Lịch'],['schedule','Tập chung'],['group','Nhóm'],['me','Tôi']];
 I.today=I.schedule;
+I.schedule='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-6M8 16h8a4 4 0 0 0 1-7.9A5 5 0 0 0 7.1 7 4.5 4.5 0 0 0 8 16z"/></svg>';
 function render(){
   if((ui.tab==='assign'||ui.tab==='lessons')&&!isLeader())ui.tab='today';
   const sel=document.getElementById('me-select');
   sel.innerHTML=S.members.map(m=>`<option value="${m.id}" ${m.id===S.me?'selected':''}>${esc(m.name)}${m.role==='leader'?' (trưởng nhóm)':''}</option>`).join('');
   const tabs=TABS.concat(isLeader()?[['assign','Giao bài']]:[]);
-  document.getElementById('nav').innerHTML=tabs.map(([k,l])=>`<a href="#${k}" class="${k==='assign'?'lead':''}" ${ui.tab===k?'aria-current="page"':''}>${I[k]}<span>${l}</span></a>`).join('');
+  const todo=isLeader()?unassignedDays():0;
+  document.getElementById('nav').innerHTML=tabs.map(([k,l])=>{const dot=k==='assign'&&todo;
+    return`<a href="#${k}" ${ui.tab===k?'aria-current="page"':''} ${dot?`aria-label="${l}, còn ${todo} ngày chưa giao bài"`:''}>${I[k]}${dot?'<i class="nav-dot" aria-hidden="true"></i>':''}<span>${l}</span></a>`}).join('');
   const v={today:vToday,group:vGroup,schedule:vSchedule,me:vProfile,assign:vAssign,lessons:vLessons}[ui.tab];
   document.getElementById('view').innerHTML=v();
   const lb=document.getElementById('lb');let lbHtml='';
@@ -1622,7 +1687,7 @@ document.addEventListener('click',e=>{
   if(a==='check')return; // handled by change
   e.preventDefault();
   switch(a){
-  case 'complete':{const d=day(m.id);d.status='done';ui.volTrain=false;
+  case 'complete':{const d=day(m.id);d.status='done';ui.volTrain=false;{const a0=assignmentFor(m.id);if(a0)d.log={items:a0.items.map(x=>({...x}))}}
     if(!isDaily(m)){allDoneCheck();const[w1,w2]=weekCount(m);setTimeout(()=>celebrate('Xong buổi hôm nay!','Tuần này '+w1+'/'+w2+' buổi',{kind:'done'}),30);break}
     m.streak++;
     if(m.goal&&m.streak===m.goal)post(m.id,'streak','hoàn thành mục tiêu chuỗi <b>'+m.goal+' ngày</b>');
@@ -1644,8 +1709,8 @@ document.addEventListener('click',e=>{
   case 'rsvp':{const s=S.sessions.find(x=>x.id===id);s.rsvp[m.id]=t.dataset.v;{const dd=dayOf(m.id,s.date);if(t.dataset.v==='yes')dd.mode='park';else if(dd.mode==='park')dd.mode=null}toast(t.dataset.v==='yes'?'Đã báo sẽ đến':'Đã báo không đến');break}
   case 'checkin':{const s=S.sessions.find(x=>x.id===id);if(!s.checkins.includes(m.id)){s.checkins.push(m.id);s.rsvp[m.id]='yes';m.attended=Math.min(8,m.attended+1);
     const f=S.feed.find(p=>p.kind==='meet'&&p.sid===s.id);
-    if(f){f.who=m.id;f.text='và '+(s.checkins.length-1)+' người khác đã check-in buổi <b>'+esc(s.title)+'</b> tại Công viên Lê Văn Tám';f.ts=Date.now()}
-    else{post(m.id,'meet','đã check-in buổi <b>'+esc(s.title)+'</b> tại Công viên Lê Văn Tám');S.feed[0].sid=s.id}
+    if(f){f.who=m.id;f.text='và '+(s.checkins.length-1)+' người khác đã check-in buổi <b>'+esc(s.title)+'</b>';f.ts=Date.now()}
+    else{post(m.id,'meet','đã check-in buổi <b>'+esc(s.title)+'</b>');S.feed[0].sid=s.id}
     toast('Check-in thành công, +1 buổi tập chung')}break}
   case 'skillup':{const sk=m.skills[id],def=SKILLS[id];if(sk.s<def.st.length-1){sk.s++;sk.best='';sk.d=TODAY;post(m.id,'skill','mở khóa <b>'+esc(def.n+' '+def.st[sk.s])+'</b>');toast('Mở khóa '+def.st[sk.s]+'! Đã đăng lên bảng tin')}break}
   case 'view':ui.view=id;break;
@@ -1761,6 +1826,11 @@ document.addEventListener('click',e=>{
   case 'backmem':ui.viewMember=null;break;
   case 'memassign':{ui.draft.target='member:'+id;ui.viewMember=null;ui.asub='give';ui.err='';
     setTimeout(()=>{const f=document.querySelector('[data-form="assign"]');if(f)f.scrollIntoView({block:'start'})},30);toast('Soạn bài riêng cho '+M(id).name);break}
+  case 'crewopen':ui.crewOpen=!ui.crewOpen;break;
+  case 'leadgive':{const v=t.dataset.v;ui.draft.date=v;ui.draft.dates=[v];ui.asub='give';ui.viewMember=null;ui.err='';location.hash='#assign';
+    setTimeout(()=>{const f=document.querySelector('[data-form="assign"]');if(f)f.scrollIntoView({block:'start'})},80);break}
+  case 'openpast':ui.openPast=ui.openPast===id?null:id;ui.pastOpen=true;break;
+  case 'pasttoggle':ui.pastOpen=!ui.pastOpen;break;
   case 'sub':ui.sub=t.dataset.v;ui.chal=null;ui.newChal=false;ui.err='';break;
   case 'cm':ui.openCm[id]=!ui.openCm[id];break;
   case 'metricform':ui.metricForm=!ui.metricForm;ui.err='';break;
